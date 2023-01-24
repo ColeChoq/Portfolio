@@ -1,0 +1,756 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Colton Choquette Portfolio</title>
+
+        <!-- stylesheets-->
+        <link rel="stylesheet" href="../css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="icon" href="../images/profilepic.jpg">
+        <!-- scripts -->
+        <script type=”text/javascript” src="../js/script.js"></script>
+        <script src="https://kit.fontawesome.com/c74177e16b.js" crossorigin="anonymous"></script>
+
+    </head>
+
+
+<body>
+
+    <div class="top">
+        <p>Python Programming Portfolio</p>
+    </div>
+    <div class="wrapper">
+        
+        <div class="sidebar">
+           <!--profile image & text-->
+           <div class="profile">
+                <img src="../images/profilepic.jpg" alt="profile_picture">
+                <h3>Colton Choquette</h3>
+                <p>Software Engineer</p>
+            </div>
+            <!--menu item-->
+            <div class="sidelist">
+                <ul>
+                    <li>
+                        <a href="../index.html" >
+                            <span class="icon"><i class="fa-solid fa-house"></i></span>
+                            <span class="item">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="edu.html" >
+                            <span class="icon"><i class="fa-solid fa-building-columns"></i></span>
+                            <span class="item">Education</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="work.html" >
+                            <span class="icon"><i class="fa-sharp fa-solid fa-briefcase"></i></span>
+                            <span class="item">Work Experience</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="courses.html" >
+                            <span class="icon"><i class="fa-sharp fa-solid fa-book"></i></span>
+                            <span class="item">Relevant Coursework</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="c.html">
+                            <span class="icon"><i class="fa-sharp fa-solid fa-copyright"></i></span>
+                            <span class="item">C</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="c++.html">
+                            <span class="icon"><i class="fa-solid fa-code"></i></i></span>
+                            <span class="item">C++</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="python.html" class="active">
+                            <span class="icon"><i class="fa-brands fa-python"></i></span>
+                            <span class="item">Python</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="htmlcss.html">
+                            <span class="icon"><i class="fa-brands fa-html5"></i></span>
+                            <span class="item">HTML & CSS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resume.html">
+                            <span class="icon"><i class="fa-solid fa-file"></i></span>
+                            <span class="item">Resume</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <span class="icon"><i class="fa-solid fa-address-book"></i></span>
+                            <span class="item">Contact Info</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="lefttext">
+            <h1><b><u>Python Project</u></b></h1>
+            <br>
+            <h1 id="underline">Computer Security Semester Project</h1>
+            
+            <div id="Assignment 1">
+                <h3><br><b>Assignment 1</b></h3>
+                <h4>Assignment Description</h4>
+                <pre>
+    This assignment was the culmination of a semester-long project for my computer security class. The purpose of this assignment was to create a program to 
+    transfer files from one computer to another securely. The first step was to have the user register an account which was required to be secure by encrypting 
+    the user's login information with a secure hash algorithm before saving it to the system. Next, we had the user sign in to the application by encrypting the 
+    users entered credentials and checking them against previously saved encrypted credentials. We also allowed the user to add contacts of other users to whom 
+    they can securely send files. If both users are online at the same time, they each then have the option to transfer files securely between themselves. 
+    We accomplished this by creating both TCP and UDP clients and servers to both send and receive the files.
+                </pre>
+                
+                <h4>main.py</h4>
+                <pre id="dispCode">
+from Crypto.PublicKey import RSA
+from Crypto.Random import get_random_bytes
+from Crypto.Cipher import AES, PKCS1_OAEP
+import os
+import sys
+import stdiomask
+import hashlib
+import socket
+import sys
+import json
+import ast
+import base64 as b64
+import threading
+
+
+def getContactInfo():
+    name = input('Enter full name: ')
+    email = input('Enter e-mail: ')
+    return name, email
+
+def addPerson(fileName, cipher):
+    name, email = getContactInfo()
+    # Put information into dict
+    newPerson = {
+        'Name': name,
+        'Email': email,
+        'IP': ''
+    }
+    # Convert dict to json string
+    jString = json.dumps(newPerson)
+
+    # Create new cipher object and encrypt contact info
+    cipherText, tag = cipher.encrypt_and_digest(bytes(jString, 'utf-8'))
+
+    newPerson = {
+        'ContactInfo': b64.b64encode(cipherText).decode('utf-8'),
+        'Nonce': b64.b64encode(cipher.nonce).decode('utf-8'),
+        'Tag': b64.b64encode(tag).decode('utf-8')
+    }
+
+    # If the JSON file is empty, add square brackets to
+    # start it off. VERY IMPORTANT
+    if os.stat(fileName).st_size == 0:
+        with open(fileName, 'w') as file:
+            file.write('[]')
+
+    # Open JSON file for reading
+    with open(fileName, 'r') as file:
+        data = json.load(file)
+
+    # Put the new info with the old info
+    data.append(newPerson)
+
+    with open(fileName, 'w') as file:
+        json.dump(data, file, indent = 4)
+
+    return 1
+
+def decContacts(fileName, key):
+    # Get the JSON file
+    with open(fileName, 'r') as file:
+        info = json.load(file)
+
+    for person in info:
+        # Decode bytes then encode into a format we can use to decrypt
+        contactInfo = b64.decodebytes(person['ContactInfo'].encode('utf-8'))
+        nonce = b64.decodebytes(person['Nonce'].encode('utf-8'))
+        tag = b64.decodebytes(person['Tag'].encode('utf-8'))
+        
+        # Create a new AES obj with key and nonce
+        cipher = AES.new(key, AES.MODE_EAX, nonce)
+
+        # Decrypt information, decode it, go from string to a dictionary.
+        data = ast.literal_eval(cipher.decrypt_and_verify(contactInfo, tag).decode('utf-8'))
+        if len(data['IP']):
+            print(data['Name'])
+            print(data['Email'])
+            print(data['IP'])
+
+def searchContactEmail(fileName, key, name):
+    # Get the JSON file
+    with open(fileName, 'r') as file:
+        info = json.load(file)
+
+    for person in info:
+        # Decode bytes then encode into a format we can use to decrypt
+        contactInfo = b64.decodebytes(person['ContactInfo'].encode('utf-8'))
+        nonce = b64.decodebytes(person['Nonce'].encode('utf-8'))
+        tag = b64.decodebytes(person['Tag'].encode('utf-8'))
+        
+        # Create a new AES obj with key and nonce
+        cipher = AES.new(key, AES.MODE_EAX, nonce)
+
+        # Decrypt information, decode it, go from string to a dictionary.
+        data = ast.literal_eval(cipher.decrypt_and_verify(contactInfo, tag).decode('utf-8'))
+        if data['Email'] == name:
+            return 1
+
+    return 0
+
+def addIP(fileName, key, name, ip):
+    """ By default, IP addresses are empty.
+    This function takes in four paramters needed to 
+    access the JSON file and adds the IP to the
+    JSON. It takes the requested person, transfers
+    the data to a new dict, copy the entire JSON file
+    without that person, append the new information
+    with the old. Adds person with IP to the bottom
+    This function works alongisde the cybersecurity
+    project. 
+
+    Args:
+        fileName (String): Typically contacts.json
+        keyFile (String): Typically key.txt
+        name ([type]): Name of the person we want to change
+        ip ([type]): The given IP to put into contacts
+    """
+     # Counter to know what index
+    i = 0
+
+    # Get the JSON file
+    with open(fileName, 'r') as file:
+        info = json.load(file)
+
+    # Empty skeleton for a new person
+    newPerson = {
+        'Name': '',
+        'Email': '',
+        'IP': ''
+    }
+
+    for person in info:
+        # Decode bytes then encode into a format we can use to decrypt
+        contactInfo = b64.decodebytes(person['ContactInfo'].encode('utf-8'))
+        nonce = b64.decodebytes(person['Nonce'].encode('utf-8'))
+        tag = b64.decodebytes(person['Tag'].encode('utf-8'))
+
+        # Create a new AES obj with key and nonce
+        cipher = AES.new(key, AES.MODE_EAX, nonce)
+
+        # Decrypt information, decode it, go from string to a dictionary.
+        data = ast.literal_eval(cipher.decrypt_and_verify(
+            contactInfo, tag).decode('utf-8'))
+
+        if data['Name'] == name:
+            # Transfer data to skeleton, enter the IP
+            newPerson['Name'] = data['Name']
+            newPerson['Email'] = data['Email']
+            newPerson['IP'] = ip
+
+            # Convert dict to JSON string
+            j = json.dumps(newPerson)
+
+            # Create new Cipher object for encrypting
+            cipher2 = AES.new(key, AES.MODE_EAX)
+            cipherText, tag = cipher2.encrypt_and_digest(bytes(j, 'utf-8'))
+
+            # Encrypted contact info alongside nonce and tag
+            newPerson = {
+                'ContactInfo': b64.b64encode(cipherText).decode('utf-8'),
+                'Nonce': b64.b64encode(cipher2.nonce).decode('utf-8'),
+                'Tag': b64.b64encode(tag).decode('utf-8')
+            }
+
+            # Call deleteEntry() to return information without
+            # the person given. Appends new data to contacts
+            newInfo = deleteEntry(fileName, i)
+            newInfo.append(newPerson)
+
+            # Delete the contents of the JSON file
+            # and add braces
+            with open(fileName, 'w') as file:
+                file.seek(0)
+                file.truncate()
+                file.write('[]')
+                    
+            # Dump information into JSON file
+            with open(fileName, 'w') as file:
+                json.dump(newInfo, file, indent=4)
+                
+        i += 1  # Increment counter
+
+def deleteEntry(fileName, index):
+    """Searchs the JSON file for anything
+    other than the specified index and returns
+    it
+
+    Args:
+        fileName ([type]): Typically contacts.json
+        index ([type]): Entry we want to avoid
+
+    Returns:
+        List: Returns a list of everyone we want except
+            the person we don't want
+    """
+    i = 0
+    myList = []
+    with open(fileName, 'r') as file:
+        info = json.load(file)
+    for person in info:
+        if i != index:
+            myList.append(person)
+        i += 1
+    return myList      
+
+def server(fileName, key):
+  bufferSize = 2048   # Number of bytes to send/receive
+  host = "localhost"  # localhost
+  port = 5050 # port number
+
+  while True:
+    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM) 
+    s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+    s.bind((host, port)) # binds address:(hostname,port#) to socket 
+    s.listen(5)
+    cont = 0
+    server,addr = s.accept()    # Waits for a connection, returns senders' info
+    message = server.recv(bufferSize)  # Receives message from sender
+    mes =  message.decode("utf-8")
+    if mes == 'f':
+     """" key = RSA.import_key(hexPass)
+      encrypt_key, nonce, tag, cipher = (key.size_in_bytes(), 16, 16, -1)
+
+      cipher_key = PKCS1_OAEP.new(key)
+      session = cipher_key.decrypt(enc_session_key)
+
+      aes_cipher = AES.new(session, AES.MODE_EAX, nonce)
+      file_data"""""
+
+    # Accept file transfer
+    elif mes == 'h': #Do Handshake
+      senderName = server.recv(bufferSize).decode('utf-8')
+    #Search for name in client list- cont = 1 if found cont = 0 if not *********
+      if searchContactEmail(fileName, key, senderName) == 1:
+      #send own name back
+        server.send(bytes(cont, 'utf-8'))
+      else:
+      #send 0
+        server.send('0')
+      finalCheck = server.recv(bufferSize).decode('utf-8')
+      if finalCheck == '1':
+        ipAddr = server.getpeername()
+        addIP(fileName, key, senderName, ipAddr)
+        #put Ip in the contact with senderInfo name************
+
+    server.close()
+
+    
+def udpClient(fileName, key):
+  port = 5050 # Assign port number
+  bufferSize = 2048   # Number of bytes sent/received
+
+  while True:
+    client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+    client.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+    client.bind(("", port)) # Broadcast to everyone on port 5050
+    cont = 0
+
+    
+    data, addr = client.recvfrom(bufferSize) # Consider getting rid of addr? Not used anywhere
+
+    # TCP below, does the Handshake process
+    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM) # Their socket?
+    host = data.decode('utf-8')  # localhost
+    # Redundant port = port #port number
+    s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+    s.connect((host, port)) # Connect client to server
+    message = 'h'# Handshake 
+    s.send(bytes(message,"utf-8"))
+    mess = 'd' # change D to username variable *********
+    s.send(bytes(mess,"utf-8"))
+    senderName = s.recv(bufferSize).decode('utf-8') # Returns sender info
+    # Sender info has the name
+    if senderName == "0" :
+      print("not in Contact's list")#maybe get rid of this
+    else:
+      #check senderInfo is in contacts if yes cont = 1 if no cont = 0********
+      if searchContactEmail(fileName, key, senderName) == 1:
+        s.send(bytes('1',"utf-8"))
+        ipAddr = s.getpeername()
+        addIP(fileName, key, senderName, ipAddr)
+        #update the contact with name senderInfo to have this IP**********
+      else:
+        s.send(bytes('0',"utf-8"))
+    s.close()
+
+# Check the given contact to our contact list
+# If it in, return true
+def verifyContact(contact, key):
+    # check if empty
+    info = decrypt(key)
+    if contact in info:
+        return True
+    else:
+        return False
+
+def decrypt(key):
+    inFile = open("contactInfo.txt", "rb") #open contact file 
+    #generate the cipher text to be able to decrypt the data to list the contacts 
+    nonce, tag, cipherText = [ inFile.read(x) for x in (16, 16, -1)] 
+    cipher = AES.new(key, AES.MODE_EAX, nonce)
+    # Decrypt text for printing
+    data = cipher.decrypt_and_verify(cipherText, tag)
+    # Decodes from bytes to something else
+    data = data.decode('utf-8')
+    inFile.close()
+    return data
+
+#Milestone 1 - Registering a new user
+#********************************************************************
+userFile = open("userData.txt", "r+")
+passwordFile = open("passwords.txt", "r+")
+
+# check if there is a user already in the file
+# userContent = userFile.read()
+# Register user
+if os.path.getsize("userData.txt") == 0: #Check if there's a user associated with this client
+  print("No users registered with this client.\n")
+  newUser = input("Do you want to register a new user (y/n)? ")
+  if newUser == 'y'or newUser == 'Y':
+    name = input("\nEnter full name: ")
+    emailAddress = input("Enter e-mail address: ")
+    password = stdiomask.getpass(prompt = "Enter password: ", mask = '♠')
+    confirmationPass = stdiomask.getpass(prompt = "Re-enter password: ", mask = '♠')
+    while password != confirmationPass:
+      print("Passwords do not match.\n\n")
+      password = stdiomask.getpass(prompt = "Enter password: ", mask = '♠')
+      confirmationPass = stdiomask.getpass(prompt = "Re-enter password: ", mask = '♠')
+    
+    userFile.write(name)
+    userFile.write("\n")
+    userFile.write(emailAddress)
+    userFile.write("\n")
+    encryptPass = password.encode()
+    hashPassword = hashlib.sha256(encryptPass)
+    hexPass = hashPassword.hexdigest()
+    passwordFile.write(hexPass)
+    #print(hexPass)
+
+    print("\nPasswords Match. \nUser Registered.\nExiting SecureDrop.")          
+
+userFile.close()
+passwordFile.close()
+
+# Milestone 2 - Login for registered user
+#*****************************************************************************
+check = 0;
+while check == 0:
+  userFile = open("userData.txt", "r+")
+  passwordFile = open("passwords.txt", "r+")
+
+  iUser = input("Enter Email Address: ")
+  iPass = stdiomask.getpass(prompt = "Enter Password: ", mask = '♠')
+  encryptIPass = iPass.encode()
+  hashIPass = hashlib.sha256(encryptIPass)
+  tmpHash = hashIPass.hexdigest()
+  #print(tmpHash)
+  flag = 0
+  flag1 = 0
+  index = 0
+  index1 = 0
+
+  for line in userFile:  
+    index += 1 
+      
+    # Compare email addresses to the one in file
+    if iUser in line:
+      flag = 1
+      break 
+
+  if flag == 1: 
+    for line in passwordFile:  
+      index1 += 1 
+
+    # checking if the hash of the password entered will match the users password on file
+      if tmpHash in line:  
+          flag1 = 1
+          break 
+
+  if flag1 == 1: 
+    check = 1
+  else:    
+    print("\nEmail and Password Combination Invalid.\n\n")
+  userFile.close()
+  passwordFile.close()
+
+#Milestone 3 -Adding Contacts
+#***********************************************************************
+#generate a AES key to use for encrypting and decrypting the contacts list
+fileName = 'contacts.json'
+with open('passwords.txt', 'rb') as file:
+    key = b'1111111111111111' # Had to hardcode, cannot get password we want
+# Thread start
+"""try:
+   thread.start_new_thread( udpClient, (variables that we want to pass) )
+   thread.start_new_thread( server, ( variables that we want to pass) )
+except:
+   print "Error: unable to start thread"
+   """
+print("\nWelcome to SecureDrop.\nType \"help\" For Commands.\n\n")
+#prompt the user and see what they want to do with the contact list
+while 1:
+  inpt = input("secure_drop&gt; ")
+
+  if inpt == "help":
+    print("\n\"add\" -&gt; Add a new contact\n\"list\" -&gt; List all online contacts\n\"send\" -&gt; Transfer file to contact\n\"exit\" -&gt; Exit SecureDrop")
+  elif inpt == "add":
+        # Get name and email from user when adding
+        cipher = AES.new(key, AES.MODE_EAX)
+
+        if addPerson(fileName, cipher) == 0:
+            print("Adding contact failed...")
+            exit(-1)
+
+        print("Contact added!")
+
+
+
+    #Milestone 4
+    #***********************************************************************
+  elif inpt == "list":
+    # If empty print out message
+    if os.path.getsize(fileName) == 0:
+        print("Contacts list is empty!")
+    else:
+        decContacts(fileName, key)
+  elif inpt == "send":
+    print('send stub')
+    #tcpClient()
+  elif inpt == "exit":
+    userFile.close()
+    passwordFile.close()
+    exit()
+
+userFile.close()
+passwordFile.close()
+                </pre>
+                <h4>tcpServer.py</h4>
+                <pre id="dispCode">
+import socket
+
+host = socket.gethostbyname(socket.gethostname())
+port = 5050
+bufferSize = 2048
+
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.bind((host, port))
+    s.listen()
+    conn, addr = s.accept()
+    with conn:
+        data = conn.recv(bufferSize).decode('utf-8')
+        # If 'h' received, begin handshake
+        if data == 'h':
+            data = "Zach@" #user email
+            data = data.encode('utf-8')
+            conn.sendall(data)
+            data = conn.recv(bufferSize).decode('utf-8')
+            if data == "Cole@":#check if data is in contacts
+                conn.sendall(b'1')
+                #add ip
+            else:
+                conn.sendall(b'0')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+s = socket.socket(socket.AF_INET,socket.SOCK_STREAM) 
+s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+s.bind((host, port)) # binds address:(hostname,port#) to socket 
+s.listen(5)
+server,addr = s.accept()    # Waits for a connection, returns senders' info
+message = server.recv(bufferSize)  # Receives message from sender
+mes =  message.decode("utf-8")
+if mes == 'f':
+      key = RSA.import_key(hexPass)
+      encrypt_key, nonce, tag, cipher = (key.size_in_bytes(), 16, 16, -1)
+
+      cipher_key = PKCS1_OAEP.new(key)
+      session = cipher_key.decrypt(enc_session_key)
+
+      aes_cipher = AES.new(session, AES.MODE_EAX, nonce)
+      file_data
+
+# Accept file transfer
+elif mes == 'h': #Do Handshake
+    senderName = server.recv(bufferSize).decode('utf-8')
+#Search for name in client list- cont = 1 if found cont = 0 if not *********
+    if senderName == "Zach@":
+        server.send(bytes("Cole@", 'utf-8'))
+    else:
+        #send 0
+        server.send('0')
+    finalCheck = server.recv(bufferSize).decode('utf-8')
+    if finalCheck == '1':
+        ipAddr = server.getpeername()
+        
+        #put Ip in the contact with senderInfo name************
+        print("email: ", senderName, "IP: ", ipAddr)
+
+    server.close()"""
+                </pre>
+                <h4>udpServer.py</h4>
+                <pre id="dispCode">
+import socket
+import time
+
+server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+port = 5050
+server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+
+# Enable broadcasting mode
+server.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+
+# Set a timeout so the socket does not block
+# indefinitely when trying to receive data.
+server.settimeout(0.2)
+message = socket.gethostbyname(socket.gethostname()).encode('utf-8')
+while True:
+    print(message)
+    print(port)
+    server.sendto(message, ('&lt;broadcast&gt;', port))
+    print("message sent!")
+    time.sleep(1)
+                </pre>
+                <h4>udpClient.py</h4>
+                <pre id="dispCode">
+import socket
+
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) # UDP
+port = 5050 # Assign port number
+bufferSize = 2048   # Number of bytes sent/received
+# Enable port reusage so we will be able to run multiple clients and servers on single (host, port). 
+# Do not use socket.SO_REUSEADDR except you using linux(kernel&lt;3.9): goto https://stackoverflow.com/questions/14388706/how-do-so-reuseaddr-and-so-reuseport-differ for more information.
+# For linux hosts all sockets that want to share the same address and port combination must belong to processes that share the same effective user ID!
+# So, on linux(kernel&gt;=3.9) you have to run multiple servers and clients under one user to share the same (host, port).
+# Thanks to @stevenreddie
+client.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+
+# Enable broadcasting mode
+client.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+
+client.bind(("", port))
+#while True:
+    # Thanks @seym45 for a fix
+data, addr = client.recvfrom(bufferSize)  
+# UDP above
+# TCP below
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect((data.decode("utf-8"), port))
+    s.sendall(b'h')  # Starts the handshake
+    data = s.recv(bufferSize).decode('utf-8')
+    if data == "Zach@":#check if data is in contcts
+        s.sendall(b'Cole@')#send own email
+    else:
+        s.sendall(b'0')
+
+    data = s.recv(bufferSize).decode('utf-8')
+    if data == '1':
+        ipAddr = s.getpeername()
+        
+
+print('Received', repr(data))
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+while True:
+    # TCP below, does the Handshake process
+    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM) # Their socket?
+    host = data.decode('utf-8')  # localhost
+    # Redundant port = port #port number
+    s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+    s.connect((host, port)) # Connect client to server
+    message = 'h'# Handshake 
+    s.send(bytes(message,"utf-8"))
+    mess = "Zach@" # change D to username variable *********
+    s.send(bytes(mess,"utf-8"))
+    senderName = s.recv(bufferSize).decode('utf-8') # Returns sender info
+    # Sender info has the name
+    if senderName == "0" :
+      print("not in Contact's list")#maybe get rid of this
+    else:
+      #check senderInfo is in contacts if yes cont = 1 if no cont = 0********
+      if senderName == "Cole@":
+        s.send(bytes('1',"utf-8"))
+        ipAddr = s.getpeername()
+        #update the contact with name senderInfo to have this IP**********
+        print(f"Email: {senderName} IP: {ipAddr}")
+      else:
+        s.send(bytes('0',"utf-8"))
+    s.close()"""
+                </pre>
+                
+            </div>
+        </div>
+
+    </div>
+  <script>
+
+  </script>
+</body>
+
+
+</html>

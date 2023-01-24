@@ -1,0 +1,2731 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Colton Choquette Portfolio</title>
+
+        <!-- stylesheets-->
+        <link rel="stylesheet" href="../css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="icon" href="../images/profilepic.jpg">
+        <!-- scripts -->
+        <script type=”text/javascript” src="../js/script.js"></script>
+        <script src="https://kit.fontawesome.com/c74177e16b.js" crossorigin="anonymous"></script>
+
+    </head>
+
+
+<body>
+
+    <div class="top">
+        <p>C++ Programming Portfolio</p>
+    </div>
+    <div class="wrapper">
+        
+        <div class="sidebar">
+           <!--profile image & text-->
+           <div class="profile">
+                <img src="../images/profilepic.jpg" alt="profile_picture">
+                <h3>Colton Choquette</h3>
+                <p>Software Engineer</p>
+            </div>
+            <!--menu item-->
+            <div class="sidelist">
+                <ul>
+                    <li>
+                        <a href="../index.html" >
+                            <span class="icon"><i class="fa-solid fa-house"></i></span>
+                            <span class="item">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="edu.html" >
+                            <span class="icon"><i class="fa-solid fa-building-columns"></i></span>
+                            <span class="item">Education</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="work.html" >
+                            <span class="icon"><i class="fa-sharp fa-solid fa-briefcase"></i></span>
+                            <span class="item">Work Experience</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="courses.html" >
+                            <span class="icon"><i class="fa-sharp fa-solid fa-book"></i></span>
+                            <span class="item">Relevant Coursework</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="c.html">
+                            <span class="icon"><i class="fa-sharp fa-solid fa-copyright"></i></span>
+                            <span class="item">C</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="c++.html" class="active">
+                            <span class="icon"><i class="fa-solid fa-code"></i></i></span>
+                            <span class="item">C++</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="python.html">
+                            <span class="icon"><i class="fa-brands fa-python"></i></span>
+                            <span class="item">Python</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="htmlcss.html">
+                            <span class="icon"><i class="fa-brands fa-html5"></i></span>
+                            <span class="item">HTML & CSS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resume.html">
+                            <span class="icon"><i class="fa-solid fa-file"></i></span>
+                            <span class="item">Resume</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <span class="icon"><i class="fa-solid fa-address-book"></i></span>
+                            <span class="item">Contact Info</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="lefttext">
+            <h1><b><u>C++ Projects</u></b></h1>
+            <br>
+            <h1 id="underline">Computing IV Portfolio</h1>
+            
+            <div id="PS0">
+                <h3><br><b>PS0</b></h3>
+                <h4>Assignment Description</h4>
+                <p>This project aimed to introduce us to the SFML library
+                     for graphics. We had to create a program that created 
+                     a sprite that moved based on input from the user. We 
+                     first created a window, then made a texture object for 
+                     our sprite to use. I chose a pixel art apple tree. Then 
+                     we created the sprite and had a loop that would run as
+                     long as the window was open. Inside this loop we would
+                     constantly delete and redraw the sprite based off the 
+                     desired movement from the user. I incorporated the controls
+                     WASD for directional movement and QE for rotational movement.
+                     I also added the control R to reset the sprite to its original
+                      location and orientation.
+                </p>
+                <h4>Key Concepts</h4>
+                <p>The key concept I used in this assignment was the SFML draw loop
+                     to delete and redraw the sprite while the window was open. We also 
+                     used SFML event handling to see if the window was open to know if 
+                     the loop should continue.
+                </p>
+                <h4>What I learned</h4>
+                <p>Having never used SFML before I learned about rendering the window, 
+                    using the SFML draw loop, textures, sprites, and other necessary SFML
+                    concepts.
+                </p>
+                <h4>Code Running</h4>
+                <img src="../images/Ps0Running.png" alt="Running code">
+                <h4>Makefile</h4>
+                <pre id="dispCode">
+                    CC = g++
+                    CFLAGS = -c -g -Og -Wall -Werror -ansi -pedantic
+                    OBJ = FibLFSR.o PhotoMagic.o
+                    DEPS = 
+                    LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+                    EXE = SFML-app
+                    
+                    all: $(OBJ)
+                    $(CC) $(OBJ) -o $(EXE) $(LIBS)
+                    
+                    %.o: %.cpp $(DEPS)
+                    $(CC) $(CFLAGS) -o $@ $&lt;
+                    
+                    clean:
+                    rm $(OBJ) $(EXE)  
+                </pre>
+                <h4>Main.cpp</h4>
+                <pre id="dispCode">
+                    
+                //Colton Choquette
+    
+                #include &lt;SFML/Graphics.hpp&gt;
+                #include&lt;iostream&gt;
+    
+                int main()
+                {
+                    
+                    sf::RenderWindow window(sf::VideoMode(300, 300), "WASD-to move/QE-to rotate/R-reset");
+                    //sf::CircleShape shape(100.f);
+                    //shape.setFillColor(sf::Color::Blue);
+                
+                    sf::Texture texture;
+                    if (!texture.loadFromFile("./sprite.png"))
+                        return EXIT_FAILURE;
+                    sf::Sprite sprite(texture);
+    
+    
+    
+                    while (window.isOpen())
+                    {
+                        sf::Event event;
+                        while (window.pollEvent(event))
+                        {
+                            if (event.type == sf::Event::Closed)
+                        {
+                                window.close();
+                        }
+    
+                        switch (event.type)
+                        {
+                            case sf::Event::KeyPressed:
+                                
+                                switch (event.key.code)
+                                {
+                                    case sf::Keyboard::S:
+                                        sprite.move(0.0f, 5.0f);
+                                        break;
+                                    case sf::Keyboard::W:
+                                        sprite.move(0.0f, -5.0f);
+                                        break;
+                                    case sf::Keyboard::D:
+                                        sprite.move(5.0f, 0.0f);
+                                        break;
+                                    case sf::Keyboard::A:
+                                        sprite.move(-5.0f, 0.0f);
+                                        break;
+                                    case sf::Keyboard::E:
+                                        sprite.rotate(10.f);
+                                        break;
+                                    case sf::Keyboard::Q:
+                                        sprite.rotate(-10.f);
+                                        break;
+                                    case sf::Keyboard::R:
+                                        sprite.setPosition(0.f, 0.f);
+                                        sprite.setRotation(0.f);
+    
+                                        break;
+    
+                                    
+                                    default:break;
+    
+                                }
+                                break;
+                            default:break;
+                        }	       
+    
+                    }
+                    
+    
+                        window.clear();
+                        //window.draw(shape);
+                        window.draw(sprite);
+                    window.display();
+                    }
+    
+                    return 0;
+                }
+                </pre>
+            </div>
+            
+            <div id="PS1A">
+                <h3><br><b>PS1A</b></h3>
+                <h4>Assignment Description</h4>
+                <p>
+                    In this assignment we were to take a given 16-bit seed in the form of
+                    a string. We were then to implement a class that contained two functions
+                     step and generate. The step function is a linear feedback shift 
+                     register that removes the last bit and xor's it with three other 
+                     bits called tabs then that bit is moved to the least significant bit.
+                     The function returns the bit result from the exclusive or's. The 
+                     generate function is given an integer k and runs the step function 
+                     that number of times. It then returns the decimal representation of 
+                     the k bits returned from the step function.
+                </p>
+                <h4>Key Concepts</h4>
+                <p>The key concepts used in this project were class objects and vectors. In my class I implemented the two functions and had a vector of integers as a member variable. I used a vector of integers as a representation for the register of bits. I used this because a vector allows me to access any number in the vector as long as I know the place that number is in. Since the xor's required that I access specific bits within the register a vector of integers seemed most logical. I also chose this because vectors allocate and deallocate memory on their own which prevents possible mistakes in my code for memory loss. The vector was similar to the string and I needed only to take each character from the string subtract the value of the character '0' to give me the integer representation of each character and push it into my vector.
+                </p>
+                <h4>What I learned</h4>
+                <p>In this project I learned about linear feedback shift registers and how they work. I also got to practice more with vectors and classes to solidify my understanding. I also got my first exposure to boost libraries. Some of the tests were given to us and we had to add some more. My first test checks the output. Since we had to overload the insertion operator, I considered this to be an important check. I tested that it worked right after the object declaration then I tested it after I ran each of the 
+                    functions to ensure that none of these variables had an effect on the output. My code passed these tests without incident.
+                    <br>
+                    My second test dealt with exception handling. I included an exception for the possibility that the generate function was given a negative number as a parameter. The test was to check that this exception was working properly and would not throw an exception when given a positive number. My program passed this test as well.
+                    
+                </p>
+                <h4>Code Running</h4>
+                <img src="../images/Ps1arunning.png" alt="Running code">
+                <h4>Makefile</h4>
+                <pre id="dispCode">
+                    CC = g++
+                    CFLAGS =  -Wall -Werror -pedantic
+                    BOOST_ARG = -lboost_unit_test_framework
+                    OBJ = test.o FibLFSR.o
+    
+                    all: ps1a
+    
+                    ps1a: $(OBJ)
+                        $(CC) $(CFLAGS) -o ps1a $(OBJ) $(BOOST_ARG)
+    
+                    test.o: test.cpp
+                        $(CC) $(CFLAGS) -c test.cpp -o test.o $(BOOST_ARG)
+    
+                    FibLFSR.o: FibLFSR.cpp
+                        $(CC) $(CFLAGS) -c FibLFSR.cpp -o FibLFSR.o
+    
+                    clean: 
+                        rm -f ps1a $(OBJ) ps1a
+                </pre>
+                <h4>Test.cpp</h4>
+                <pre id="dispCode">
+                    // Dr. Rykalova
+                    // test.cpp for PS1a
+                    // updated 1/31/2020
+                    
+                    #include &lt;iostream&gt;
+                    #include &lt;string&gt;
+                    
+                    #include "FibLFSR.h"
+                    
+                    #define BOOST_TEST_DYN_LINK
+                    #define BOOST_TEST_MODULE Main
+                    #include &lt;boost/test/unit_test.hpp&gt;
+                    #include &lt;boost/test/output_test_stream.hpp&gt;
+                    using boost::test_tools::output_test_stream;
+                    
+                    BOOST_AUTO_TEST_CASE(sixteenBitsThreeTaps) {
+                    
+                      FibLFSR l("1011011000110110");
+                      BOOST_REQUIRE(l.step() == 0);
+                      BOOST_REQUIRE(l.step() == 0);
+                      BOOST_REQUIRE(l.step() == 0);
+                      BOOST_REQUIRE(l.step() == 1);
+                      BOOST_REQUIRE(l.step() == 1);
+                      BOOST_REQUIRE(l.step() == 0);
+                      BOOST_REQUIRE(l.step() == 0);
+                      BOOST_REQUIRE(l.step() == 1);
+                    
+                      FibLFSR l2("1011011000110110");
+                      BOOST_REQUIRE(l2.generate(9) == 51);
+                    }
+                    
+                    //This Test case is to make sure that the implementation 
+                    //of &lt;&lt; operator was done correctly. It will define and
+                    //output objects and change them with both the step
+                    //and generate functions. Then check that they were
+                    //output correctly.
+                    BOOST_AUTO_TEST_CASE(outputCheck)
+                    {
+                        output_test_stream output;
+                        FibLFSR test_1 ("1010101010101010");
+                        output &lt;&lt; test_1;
+                        BOOST_TEST(!output.is_empty(false));
+                        BOOST_TEST(output.check_length(16, false));
+                        BOOST_TEST(output.is_equal("1010101010101010"));
+                    
+                        test_1.step();
+                        output &lt;&lt; test_1;
+                        BOOST_TEST(!output.is_empty(false));
+                        BOOST_TEST(output.check_length(16, false));
+                        BOOST_TEST(output.is_equal("0101010101010100"));
+                    
+                        test_1.generate(5);
+                        output &lt;&lt; test_1;
+                        BOOST_TEST(!output.is_empty(false));
+                        BOOST_TEST(output.check_length(16, false));
+                        BOOST_TEST(output.is_equal("1010101010000000"));
+                    
+                    }
+                    //This test case check that there is no exception thrown when there is 
+                    //a positive value or zero for K. Were k to be negative an exception 
+                    //would be thrown and this test would not pass. Since the value for K
+                    //is given as positive this test will check that the exception handling 
+                    //works properly.
+                    BOOST_AUTO_TEST_CASE(ExceptionHandling)
+                    {
+                        FibLFSR test_2 ("1010101010101010");
+                        BOOST_REQUIRE_NO_THROW(test_2.generate(5));
+                    
+                    }      
+                </pre>
+                <h4>FibLFSR.h</h4>
+                <pre id="dispCode">
+                    #include &lt;iostream&gt;
+                    #include &lt;string&gt;
+                    #include &lt;vector&gt;
+                    
+                    using namespace std;
+                    
+                    class FibLFSR {
+                    public:
+                    
+                        FibLFSR(string seed);
+                    
+                        int step();
+                    
+                        int generate(int k);
+                    
+                        vector&lt;int&gt; getVector(FibLFSR fib) { return fib.sed; }
+                    
+                        friend ostream& operator&lt;&lt;(ostream& out, const FibLFSR& point);
+                    
+                    private:
+                    
+                        vector&lt;int&gt; sed;
+                    };          
+                </pre>
+    
+                <h4>FibLFSR.cpp</h4>
+                <pre id="dispCode">
+                    #include "FibLFSR.h"
+    
+    
+                    FibLFSR::FibLFSR(string seed)
+                    {
+                        vector&lt;int&gt; vseed;
+                        for (unsigned int i = 0; i &lt; 16; ++i)
+                        {
+                            vseed.push_back(seed[i] - '0');
+                        }
+                        sed = vseed;
+                    }
+                    
+                    int FibLFSR::step()
+                    {
+                        int r_bit;
+                        vector&lt;int&gt; vseed;
+                        vseed = sed;
+                    
+                        int tab_1, tab_2, tab_3, l_bit;
+                    
+                        l_bit = vseed[0];
+                        tab_1 = vseed[2];
+                        tab_2 = vseed[3];
+                        tab_3 = vseed[5];
+                    
+                        if (l_bit == tab_1)
+                        {
+                            r_bit = 0;
+                        }
+                        else
+                        {
+                            r_bit = 1;
+                        }
+                        if (r_bit == tab_2)
+                        {
+                            r_bit = 0;
+                        }
+                        else
+                        {
+                            r_bit = 1;
+                        }
+                        if (r_bit == tab_3)
+                        {
+                            r_bit = 0;
+                        }
+                        else
+                        {
+                            r_bit = 1;
+                        }
+                        for (int i = 0; i &lt; 15; i++)
+                        {
+                            vseed[i] = vseed[i + 1];
+                        }
+                        vseed[15] = r_bit;
+                        
+                        
+                        /*for (int j = 0; j &lt; 16; j++)
+                        {
+                            cout &lt;&lt; vseed[j];
+                        }
+                        cout &lt;&lt; " " &lt;&lt; r_bit &lt;&lt; endl;*/
+                    
+                        sed = vseed;
+                    
+                        return r_bit;
+                    }
+                    
+                    int FibLFSR::generate(int k)
+                    {	
+                    int binNum = 0;
+                            try
+                            {
+                            if (k &lt; 0)
+                            {
+                                throw k;
+                            }
+                            }
+                            catch (int e)
+                            {
+                                cout &lt;&lt; "K was an invalid number less than 0.";
+                            }
+                            for (int i = 0; i &lt; k; i++)
+                            {
+                                binNum = (binNum * 2) + (this-&gt;step());
+                            }
+                            for (int j = 0; j &lt; 16; j++)
+                            {
+                                cout &lt;&lt; sed[j];
+                            }
+                            cout &lt;&lt; " " &lt;&lt; binNum &lt;&lt; endl;
+                            return binNum;
+                        
+                        
+                    }
+                    ostream& operator&lt;&lt;(ostream& out, const FibLFSR& point)
+                    {
+                        for (int i = 0; i &lt; 16; i++)
+                        {
+                            out &lt;&lt; point.sed[i];
+                        }
+                    
+                        return out;
+                    }
+                </pre>
+            </div>
+            
+            
+            <div id="PS1B" >
+                <h3><br><b>PS1B Linear Feedback Shift Register & Image Encoding</b></h3>
+                <h4>Assignment Description</h4>
+                <p>
+                    In this assignment I was able to use my linear feedback shift register code that I had from the last assignment and use it to encode and decode images. I did this by XORing the 8-bit integer I got by using the generate function on the seed or password given, and the integer of the color opacity for red, green, and blue in each pixel. This way I was able to change each pixel to a different color, so the image looked random. But when the program was run again with the same seed or password the program would XOR the result of the first XOR which gives you the original color again thereby encoding and decoding the image.
+                </p>
+                <h4>Key Concepts</h4>
+                <p>The key concepts for this project were mainly the same as the last, class objects and vectors, as I used that code in this assignment. Some other concepts used in this assignment were SFML image editing. I was able to access each pixel in the images and change them based off the linear feedback shift register and the password given. I also needed to open multiple SFML windows at one time.</p>
+                <h4>What I learned</h4>
+                <p>Before this assignment I had never done any encrypting or decrypting so not only did I learn about these concepts, but I was also able to see how their implementation might work in this scenario. I was also able to make my code accept both binary and alphanumeric passwords.</p>
+                <h4>Code Running</h4>
+                <img src="../images/P.png" alt="Running code">
+                <img src="../images/Ps1b.png" alt="Running code">
+                <h4>Makefile</h4>
+                <pre id="dispCode">
+                    CC = g++
+                    CFLAGS = -c -g -Og -Wall -Werror -ansi -pedantic
+                    OBJ = FibLFSR.o PhotoMagic.o
+                    DEPS = 
+                    LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+                    EXE = SFML-app
+
+                    all: $(OBJ)
+                        $(CC) $(OBJ) -o $(EXE) $(LIBS)
+
+                    %.o: %.cpp $(DEPS)
+                        $(CC) $(CFLAGS) -o $@ $&lt;
+
+                    clean:
+                        rm $(OBJ) $(EXE)
+                </pre>
+                <h4>PhotoMagic.cpp</h4>
+                <pre id="dispCode">
+                    #include "FibLFSR.h"
+
+                    //void transform(sf::Image&, FibLFSR*);
+
+                    int main(int argc, char* argv[])
+                    {
+
+                        FibLFSR fib (argv[3]);
+
+                        sf::Image image;
+                        if (!image.loadFromFile(argv[1]))
+                            return -1;
+                        
+                        
+                        sf::Texture texture1;
+                            texture1.loadFromImage(image);
+
+                            sf::Sprite sprite1;
+                            sprite1.setTexture(texture1);
+                        
+                        transform(image, &fib);
+                        
+                        sf::Vector2u size = image.getSize();
+                        
+
+                        sf::RenderWindow window(sf::VideoMode(size.x, size.y), "Encoded or Decoded Image");
+                        sf::RenderWindow window1(sf::VideoMode(size.x, size.y), "Original");
+                        sf::Texture texture;
+                        texture.loadFromImage(image);
+
+                        sf::Sprite sprite;
+                        sprite.setTexture(texture);
+
+                        while (window.isOpen() && window1.isOpen())
+                        {
+                            sf::Event event;
+                            while (window.pollEvent(event))
+                            {
+                                if (event.type == sf::Event::Closed)
+                                    window.close();
+                            }
+                            while (window1.pollEvent(event))
+                                    {
+                                            if (event.type == sf::Event::Closed)
+                                                    window.close();
+                                    }
+
+                            window.clear();
+                            window.draw(sprite);
+                            window.display();
+                            window1.clear();
+                            window1.draw(sprite1);
+                            window1.display();
+                        }
+
+                        if (!image.saveToFile(argv[2]))
+                            return -1;
+
+                        return 0;
+                    }
+                </pre>
+                <h4>FibLFSR.h</h4>
+                <pre id="dispCode">
+                    #ifndef FIBLFSR_H
+                    #define FIBLFSR_H
+
+                    #include &lt;iostream&gt;
+                    #include &lt;string&gt;
+                    #include &lt;vector&gt;
+                    #include &lt;SFML/System.hpp&gt;
+                    #include &lt;SFML/Window.hpp&gt;
+                    #include &lt;SFML/Graphics.hpp&gt;
+
+                    using namespace std;
+
+                    class FibLFSR {
+                    public:
+
+                        FibLFSR(string seed);
+
+                        int step();
+
+                        int generate(int k);
+
+                        vector&lt;int&gt; getVector(FibLFSR fib) { return fib.sed; }
+
+                        friend ostream& operator&lt;&lt;(ostream& out, const FibLFSR& point);
+
+                    private:
+
+                        vector&lt;int&gt; sed;
+                    };
+
+                    void transform(sf::Image&, FibLFSR*);
+                    #endif //FIBLFSR_H
+                </pre>
+    
+                <h4>FibLFSR.cpp</h4>
+                <pre id="dispCode">
+                    #include "FibLFSR.h"
+
+
+                    FibLFSR::FibLFSR(string seed)
+                    {
+                        vector&lt;int&gt; vseed;
+                        for (unsigned int i = 0; i &lt; 16; ++i)
+                        {
+                            if((seed[i] - '0') &gt; 0)
+                            {
+                                vseed.push_back(1);
+                            }
+                            else
+                            {
+                                vseed.push_back(0);
+                            }
+
+                        }
+                        sed = vseed;
+                    }
+
+                    int FibLFSR::step()
+                    {
+                        int r_bit;
+                        vector&lt;int&gt; vseed;
+                        vseed = sed;
+
+                        int tab_1, tab_2, tab_3, l_bit;
+
+                        l_bit = vseed[0];
+                        tab_1 = vseed[2];
+                        tab_2 = vseed[3];
+                        tab_3 = vseed[5];
+
+                        if (l_bit == tab_1)
+                        {
+                            r_bit = 0;
+                        }
+                        else
+                        {
+                            r_bit = 1;
+                        }
+                        if (r_bit == tab_2)
+                        {
+                            r_bit = 0;
+                        }
+                        else
+                        {
+                            r_bit = 1;
+                        }
+                        if (r_bit == tab_3)
+                        {
+                            r_bit = 0;
+                        }
+                        else
+                        {
+                            r_bit = 1;
+                        }
+                        for (int i = 0; i &lt; 15; i++)
+                        {
+                            vseed[i] = vseed[i + 1];
+                        }
+                        vseed[15] = r_bit;
+                        
+                        
+                        /*for (int j = 0; j &lt; 16; j++)
+                        {
+                            cout &lt;&lt; vseed[j];
+                        }
+                        cout &lt;&lt; " " &lt;&lt; r_bit &lt;&lt; endl;*/
+
+                        sed = vseed;
+
+                        return r_bit;
+                    }
+
+                    int FibLFSR::generate(int k)
+                    {	
+                    int binNum = 0;
+                            try
+                            {
+                            if (k &lt; 0)
+                            {
+                                throw k;
+                            }
+                            }
+                            catch (int e)
+                            {
+                                cout &lt;&lt; "K was an invalid number less than 0.";
+                            }
+                            for (int i = 0; i &lt; k; i++)
+                            {
+                                binNum = (binNum * 2) + (this-&gt;step());
+                            }
+                            /*for (int j = 0; j &lt; 16; j++)
+                            {
+                                cout &lt;&lt; sed[j];
+                            }
+                            cout &lt;&lt; " " &lt;&lt; binNum &lt;&lt; endl;
+                            */
+                            return binNum;
+                        
+                        
+                    }
+                    ostream& operator&lt;&lt;(ostream& out, const FibLFSR& point)
+                    {
+                        for (int i = 0; i &lt; 16; i++)
+                        {
+                            out &lt;&lt; point.sed[i];
+                        }
+
+                        return out;
+                    }
+                    void transform(sf::Image& image, FibLFSR* fib)
+                    {
+                            sf::Vector2u size = image.getSize();
+                            sf::Color p;
+                            for (unsigned int x = 0; x&lt;size.x; x++) {
+                                    for (unsigned int y = 0; y&lt; size.y; y++) {
+                                            p = image.getPixel(x, y);
+                                            p.r = p.r ^ fib-&gt;generate(8);
+                                            p.g = p.g ^ fib-&gt;generate(8);
+                                            p.b = p.b ^ fib-&gt;generate(8);
+                                            image.setPixel(x, y, p);
+                                    }
+                            }
+
+                    }
+                </pre>
+            </div>
+             
+            <div id="PS2A" >
+                <h3><br><b>Ps2A N-Body Simulation</b></h3>
+                <h4>Assignment Description</h4>
+                <p>
+                    In this assignment we were to create two classes. One of the classes was celestialbody which is what we used to create the planets of the universe. It had members for position mass velocity etc. The other class was the universe class. It created a vector of smart pointers to the planets to make the solar system. We also had to overload some features to make them work with our class like the instream operator and the draw function.
+                </p>
+                <h4>Key Concepts</h4>
+                <p>Class inheritance was key to this assignment as we needed to be able to make a vector of pointers to another class inside of our universe class. Our celestial body class acted as our parent class because the member of the universe class was a vector of pointers to this class. We needed to do this to go through each object and change things around or draw the planets to the screen more easily.</p>
+                <h4>What I learned</h4>
+                <p>In this assignment I was able to learn more about hierarchal design in classes and how to apply that to the SFML libraries as we needed to make our objects drawable. I also used smart pointers for the first time in this assignment which are beneficial because they automatically allocate and deallocate memory which is very useful in preventing memory leaks </p>
+                <h4>Code Running</h4>
+                <img src="../images/ps2a.png" alt="Running code">
+                <h4>Makefile</h4>
+                <pre id="dispCode">
+                    CC = g++ 
+                    CFLAGS = -c -g -Og -Wall -Werror -ansi -pedantic -std=c++11
+                    OBJ = NBody.o main.o
+                    DEPS = 
+                    LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+                    EXE = SFML-app
+
+                    all: $(OBJ)
+                        $(CC) $(OBJ) -o $(EXE) $(LIBS)
+
+                    %.o: %.cpp $(DEPS)
+                        $(CC) $(CFLAGS) -o $@ $&lt;
+
+                    clean:
+                        rm $(OBJ) $(EXE)
+                </pre>
+                <h4>Main.cpp</h4>
+                <pre id="dispCode">
+                    #include "NBody.h"
+
+                    int main(int argc, char* argv[])
+                    {
+                        int planet_count;
+                        float universe_radius;
+
+
+                        std::cin &gt;&gt; planet_count &gt;&gt; universe_radius;
+
+                        Universe univ;
+                        //earth.setRadius(universe_radius);
+
+                        //earth.convertPosition();
+                        
+                        for (int i = 0; i &lt; planet_count; i++)
+                        {
+                            std::shared_ptr&lt;CelestialBody&gt; temp;
+                            univ.addBody();
+                            temp = univ.accessPlanet(i);
+                            std::cin &gt;&gt; *temp;
+                            temp-&gt;setRadius(universe_radius);
+                            temp-&gt;convertPosition();
+
+                        }
+                    sf::RenderWindow window(sf::VideoMode(window_width, window_height), "Solar System");
+                        
+                        sf::Image background_image;
+                        if (!background_image.loadFromFile("stars.png"))
+                        {
+                            return -1;
+                        }
+                        sf::Texture background_texture;
+                        background_texture.loadFromImage(background_image);
+                        sf::Sprite background_sprite;
+                        background_sprite.setTexture(background_texture);
+
+
+
+                        while (window.isOpen())
+                        {
+                            sf::Event event;
+                            while(window.pollEvent(event))
+                            {
+                                if (event.type == sf::Event::Closed)
+                                {
+                                    window.close();
+                                }
+                            
+                            }
+
+                            window.clear();
+                            window.draw(background_sprite);
+                            for (int i = 0; i &lt; planet_count; i++)
+                            {
+                                std::shared_ptr&lt;CelestialBody&gt; temp;
+                                temp = univ.accessPlanet(i);
+                                window.draw(*temp);
+                            }
+                            
+                            window.display();
+                        }
+                        return 0;
+                    }
+                </pre>
+                <h4>NBody.h</h4>
+                <pre id="dispCode">
+                    #ifndef NBODY_H
+                    #define NBODY_H
+
+                    #include &lt;iostream&gt;
+                    #include &lt;string&gt;
+                    #include &lt;vector&gt;
+                    #include &lt;fstream&gt;
+                    #include &lt;memory&gt;
+                    #include &lt;SFML/System.hpp&gt;
+                    #include &lt;SFML/Window.hpp&gt;
+                    #include &lt;SFML/Graphics.hpp&gt;
+
+                    const int window_width = 500;
+                    const int window_height = 500;
+
+                    class CelestialBody: public sf::Drawable {
+                        public:
+                            CelestialBody(){}
+
+                            CelestialBody(double ix_pos, double iy_pos, double ix_vel, double iy_vel, double imass, std::string ifile_name);
+                            void setRadius(double iradius);
+                            void convertPosition();
+                            friend std::istream& operator&gt;&gt; (std::istream &input, CelestialBody &CBody);
+
+                        private:
+                            virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+                            double x_pos;
+                            double y_pos;
+                            double x_vel;
+                            double y_vel;
+                            double mass;
+                            double radius;
+                            std::string file_name;
+                            sf::Image image;
+                            sf::Sprite sprite;
+                            sf::Texture texture;
+
+
+                    };
+
+                    class Universe: public CelestialBody
+                    {
+                        public:
+                            Universe(){}
+                            void addBody();
+                            std::shared_ptr&lt;CelestialBody&gt; accessPlanet(int num);
+                        private:
+                            std::vector&lt;std::shared_ptr&lt;CelestialBody&gt;&gt; planets;
+
+                    };
+                    #endif //NBODY_H
+                </pre>
+    
+                <h4>NBody.cpp</h4>
+                <pre id="dispCode">
+                    #include "NBody.h"
+
+                    CelestialBody::CelestialBody(double ix_pos, double iy_pos, double ix_vel, double iy_vel, double imass, std::string ifile_name)
+                    {
+                        x_pos = ix_pos;
+                        y_pos = iy_pos;
+                        x_vel = ix_vel;
+                        y_vel = iy_vel;
+                        mass = imass;
+                        file_name = ifile_name;
+
+                        if (!image.loadFromFile(ifile_name))
+                        {
+                            return;//if the file can't be found
+                        }
+
+                        texture.loadFromImage(image);
+                        sprite.setTexture(texture);
+                        //the sprite's position will be set in a separate function because the radius of the universe has to be set first
+                    }
+
+                    void CelestialBody::setRadius(double iradius)
+                    {
+                        radius = iradius;
+                        return;
+                    }
+
+                    void CelestialBody::convertPosition()
+                    {
+                        x_pos = ((x_pos/radius) * (window_width / 2)) + (window_width / 2);
+                        y_pos = ((y_pos/radius) * (window_height / 2)) + (window_height / 2);
+                        std::cout &lt;&lt; x_pos &lt;&lt; std::endl;//added in for troubleshooting
+                        std::cout &lt;&lt; x_pos &lt;&lt; std::endl;//added in for troubleshooting
+                        sprite.setPosition(x_pos, y_pos);
+
+                    }
+
+                    std::istream& operator&gt;&gt; (std::istream &input, CelestialBody &CBody)
+                    {
+                        input &gt;&gt; CBody.x_pos &gt;&gt; CBody.y_pos
+                                &gt;&gt; CBody.x_vel &gt;&gt; CBody.y_vel
+                                &gt;&gt; CBody.mass &gt;&gt; CBody.file_name;
+
+                        if (!CBody.image.loadFromFile(CBody.file_name))
+                            {
+                                    return input;//if the file can't be found
+                            }
+
+                            CBody.texture.loadFromImage(CBody.image);
+                            CBody.sprite.setTexture(CBody.texture);
+
+                        return input;
+                    }
+
+                    void CelestialBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
+                    {
+                        target.draw(sprite);
+                    }
+                    std::shared_ptr&lt;CelestialBody&gt; Universe::accessPlanet(int num)
+                    {
+                        return planets[num];
+                    }
+                    void Universe::addBody()
+                    {
+                        auto pPlanet = std::shared_ptr&lt;CelestialBody&gt;(new CelestialBody());
+                        planets.push_back(std::move(pPlanet));
+                    }
+
+                </pre>
+            </div>
+
+            <div id="PS2B" >
+                <h3><br><b>Ps2B N-Body Simulation</b></h3>
+                <h4>Assignment Description</h4>
+                <p>
+                    In this assignment we animated planets in a solar system by calculating the forces on the planets and adjusting their velocities and positions based on these calculations. I was also able to add music to the animation as well as a timer to show how long the animation has run. After the animation finished the program then displays the state of the universe including position velocity and mass as well as the file name of the planets.
+                </p>
+                <h4>Key Concepts</h4>
+                <p>The key Concepts in this assignment were the same as the last, hierarchal design in classes, and smart pointers. This assignment also required that we do some more advanced math to calculate the forces acting on each body. I used pairwise force calculations as well as newtons laws.</p>
+                <h4>What I learned</h4>
+                <p>In this project I learned about how the forces of objects interact with each other and cause the movement of our universe. I also learned how to take command line input from the user which I have never used before.</p>
+                <h4>Code Running</h4>
+                <img src="../images/ps2b1.png" alt="Running code">
+                <img src="../images/ps2b2.png" alt="Running code">
+                <h4>Makefile</h4>
+                <pre id="dispCode">
+                    CC = g++ 
+                    CFLAGS = -c -g -Og -Wall -Werror -ansi -pedantic -std=c++11
+                    OBJ = Body.o main.o
+                    DEPS = 
+                    LIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
+                    EXE = NBody
+
+                    all: $(OBJ)
+                        $(CC) $(OBJ) -o $(EXE) $(LIBS)
+
+                    %.o: %.cpp $(DEPS)
+                        $(CC) $(CFLAGS) -o $@ $&lt;
+
+                    clean:
+                        rm $(OBJ) $(EXE)
+                </pre>
+                <h4>Main.cpp</h4>
+                <pre id="dispCode">
+                    #include "Body.h"
+
+                    int main(int argc, char* argv[])
+                    {
+                        int planet_count;
+                        float universe_radius;
+                        
+                        std::string::size_type sze;
+
+                        std::string sim_dur(argv[1]);
+                        std::string stp_tim(argv[2]);
+
+                        double sim_duration = std::stod(sim_dur, &sze);
+                        double step_time = std::stod(stp_tim, &sze);
+
+                        double simulation_time = 0;
+
+                        
+
+                        std::cin &gt;&gt; planet_count &gt;&gt; universe_radius;
+
+                        Universe univ;
+                        //earth.setRadius(universe_radius);
+
+                        //earth.convertPosition();
+                        
+                        for (int i = 0; i &lt; planet_count; i++)
+                        {
+                            std::shared_ptr&lt;CelestialBody&gt; temp;
+                            univ.addBody();
+                            temp = univ.accessPlanet(i);
+                            std::cin &gt;&gt; *temp;
+                            temp-&gt;setRadius(universe_radius);
+                            temp-&gt;convertPosition();
+
+                        }
+                    sf::RenderWindow window(sf::VideoMode(window_width, window_height, 32), "Solar System");
+                        window.setFramerateLimit(60);
+
+                        sf::Image background_image;
+                        if (!background_image.loadFromFile("stars.png"))
+                        {
+                            return -1;
+                        }
+
+                        sf::Font TFont;
+
+                        TFont.loadFromFile("arial.ttf");
+
+                        sf::Text Ttext;
+                        Ttext.setFont(TFont);
+                        Ttext.setCharacterSize(14);
+                        Ttext.setFillColor(sf::Color::White);
+
+                        sf::Music music;
+                        if(!music.openFromFile("2137.ogg"))
+                        {
+                            std::cout &lt;&lt; "Can't open Music file";
+                            return -1;
+                        }
+                        music.play();
+
+                        sf::Texture background_texture;
+                        background_texture.loadFromImage(background_image);
+                        sf::Sprite background_sprite;
+                        background_sprite.setTexture(background_texture);
+
+
+
+                        while (window.isOpen())
+                        {
+                            sf::Event event;
+                            while(window.pollEvent(event))
+                            {
+                                if (event.type == sf::Event::Closed)
+                                {
+                                    window.close();
+                                }
+                            
+                            
+                            }
+
+                            window.clear();
+                            window.draw(background_sprite);
+
+                            Ttext.setString("Time: " + std::to_string(simulation_time));
+                        
+                            window.draw(Ttext);
+
+                            double force_x, force_y;
+
+                            for (int j = 0; j &lt; planet_count; j++)
+                                    {
+                                            std::shared_ptr&lt;CelestialBody&gt; temp1;
+                                            temp1 = univ.accessPlanet(j);
+
+                                force_x = 0; 
+                                force_y = 0;
+
+                                for(int k = 0; k &lt; planet_count; k++)
+                                {
+                                    std::shared_ptr&lt;CelestialBody&gt; temp2;
+                                                temp2 = univ.accessPlanet(k);
+
+                                    if(j != k)
+                                    {
+                                        force_x += find_x_force(*temp1, *temp2);
+                                        force_y += find_y_force(*temp1, *temp2);
+                                    }
+
+                                }
+                                temp1-&gt;set_forces(force_x, force_y);
+                            }
+
+                            for (int i = 0; i &lt; planet_count; i++)
+                            {
+                                std::shared_ptr&lt;CelestialBody&gt; temp;
+                                temp = univ.accessPlanet(i);
+                                window.draw(*temp);
+                            }
+                            univ.step(step_time);
+                            
+                            window.display();
+
+                            simulation_time += step_time;
+
+                            if (simulation_time &gt;= sim_duration)
+                            {
+                                break;
+                            }
+                            
+                        }
+                        std::cout &lt;&lt; planet_count &lt;&lt; std::endl;
+                        std::cout &lt;&lt; universe_radius&lt;&lt; std::endl;
+                        std::cout &lt;&lt; univ;
+                        return 0;
+                    }
+                </pre>
+                <h4>Body.h</h4>
+                <pre id="dispCode">
+                    #ifndef NBODY_H
+                    #define NBODY_H
+
+                    #include &lt;math.h&gt;
+                    #include &lt;iostream&gt;
+                    #include &lt;string&gt;
+                    #include &lt;vector&gt;
+                    #include &lt;fstream&gt;
+                    #include &lt;memory&gt;
+                    #include &lt;SFML/Audio.hpp&gt;
+                    #include &lt;SFML/System.hpp&gt;
+                    #include &lt;SFML/Window.hpp&gt;
+                    #include &lt;SFML/Graphics.hpp&gt;
+
+                    const int window_width = 450;
+                    const int window_height = 450;
+
+                    const double gravity = 6.67e-11;
+
+                    class CelestialBody: public sf::Drawable {
+                        public:
+                            CelestialBody(){}
+
+                            CelestialBody(double ix_pos, double iy_pos, double ix_vel, double iy_vel, double imass, std::string ifile_name);
+                            void setRadius(double iradius);
+                            void convertPosition();
+
+                            friend double find_x_force(CelestialBody &body1, CelestialBody &Body2);
+                            friend double find_y_force(CelestialBody &body1, CelestialBody &Body2);
+
+                            void set_forces(double forcex, double forcey);
+                            
+
+                            double get_xaccel();
+                            double get_yaccel();
+                            double get_xforc();
+                            double get_yforc();
+                            double get_x_pos();
+                            double get_y_pos();
+                            double get_x_vel();
+                            double get_y_vel();
+                            double get_mass();
+                            double get_radius();
+                            std::string get_file_name();
+                            void set_x_pos(double x);
+                            void set_y_pos(double y);
+                            void set_xaccel(double x);
+                                    void set_yaccel(double y);
+                            void set_xforc(double x);
+                                    void set_yforc(double y);
+                            void set_x_vel(double x);
+                                    void set_y_vel(double y);
+
+                            friend std::istream& operator&gt;&gt; (std::istream &input, CelestialBody &CBody);
+
+                        private:
+                            virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+                            double xaccel, yaccel;
+                            double xforc, yforc;
+                            double x_pos;
+                            double y_pos;
+                            double x_vel;
+                            double y_vel;
+                            double mass;
+                            double radius;
+                            std::string file_name;
+                            sf::Image image;
+                            sf::Sprite sprite;
+                            sf::Texture texture;
+
+
+                    };
+
+                    class Universe: public CelestialBody
+                    {
+                        public:
+                            Universe(){}
+                            void addBody();
+                            std::shared_ptr&lt;CelestialBody&gt; accessPlanet(int num);
+
+                            void step(double Ttime);
+                            
+                            friend std::ostream& operator&lt;&lt; (std::ostream &output, Universe&univ);
+
+                        private:
+                            std::vector&lt;std::shared_ptr&lt;CelestialBody&gt;&gt; planets;
+
+                    };
+                    #endif //NBODY_H
+                </pre>
+    
+                <h4>Body.cpp</h4>
+                <pre id="dispCode">
+                    #include "Body.h"
+
+                    CelestialBody::CelestialBody(double ix_pos, double iy_pos, double ix_vel, double iy_vel, double imass, std::string ifile_name)
+                    {
+                        x_pos = ix_pos;
+                        y_pos = iy_pos;
+                        x_vel = ix_vel;
+                        y_vel = iy_vel;
+                        mass = imass;
+                        file_name = ifile_name;
+
+                        if (!image.loadFromFile(ifile_name))
+                        {
+                            return;//if the file can't be found
+                        }
+
+                        texture.loadFromImage(image);
+                        sprite.setTexture(texture);
+                        //the sprite's position will be set in a separate function because the radius of the universe has to be set first
+                    }
+
+                    void CelestialBody::setRadius(double iradius)
+                    {
+                        radius = iradius;
+                        return;
+                    }
+
+                    void CelestialBody::convertPosition()
+                    {
+                        double Tx_pos = ((x_pos/radius) * (window_width / 2)) + ((window_width / 2.02)-1);
+                        double Ty_pos = ((y_pos/radius) * (window_height / 2)) + ((window_height / 2.02)-1);
+
+                        sprite.setPosition(Ty_pos, Tx_pos);
+
+                    }
+
+                    std::istream& operator&gt;&gt; (std::istream &input, CelestialBody &CBody)
+                    {
+                        input &gt;&gt; CBody.x_pos &gt;&gt; CBody.y_pos
+                                &gt;&gt; CBody.x_vel &gt;&gt; CBody.y_vel
+                                &gt;&gt; CBody.mass &gt;&gt; CBody.file_name;
+
+                        if (!CBody.image.loadFromFile(CBody.file_name))
+                            {
+                                    return input;//if the file can't be found
+                            }
+
+                            CBody.texture.loadFromImage(CBody.image);
+                            CBody.sprite.setTexture(CBody.texture);
+
+                        return input;
+                    }
+
+                    void CelestialBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
+                    {
+                        target.draw(sprite);
+                    }
+
+                    void CelestialBody::set_forces(double forcex, double forcey)
+                    {
+                        xforc = forcex;
+                        yforc = forcey;
+                    }
+
+                    double find_x_force(CelestialBody &body1, CelestialBody &body2)
+                    {
+                        double dx = body2.x_pos - body1.x_pos;
+                        double dy = body2.y_pos - body1.y_pos;
+                        double R2 = pow(dx, 2) + pow(dy, 2);
+                        double R = sqrt(R2);
+                        double force = (gravity * body1.mass *body2.mass) / R2;
+                        double for_x = force * (dx / R);
+
+                        return for_x;	
+                    }
+
+                    double find_y_force(CelestialBody &body1, CelestialBody &body2)
+                    {
+                            double dx = body2.x_pos - body1.x_pos;
+                            double dy = body2.y_pos - body1.y_pos;
+                            double R2 = pow(dx, 2) + pow(dy, 2);
+                            double R = sqrt(R2);
+                            double force = (gravity * body1.mass *body2.mass) / R2;
+                            double for_y = force * (dy / R);
+
+                            return for_y;
+                    }
+
+                    double CelestialBody::get_xaccel()
+                    {
+                        double x = xaccel;
+                        return x;
+                    }
+
+                    double CelestialBody::get_yaccel()
+                    {
+                            double x = yaccel;
+                            return x;
+                    }
+                    double CelestialBody::get_xforc()
+                    {
+                            double x = xforc;
+                            return x;
+                    }
+                    double CelestialBody::get_yforc()
+                    {
+                            double x = yforc;
+                            return x;
+                    }
+                    double CelestialBody::get_x_pos()
+                    {
+                            double x = x_pos;
+                            return x;
+                    }
+                    double CelestialBody::get_y_pos()
+                    {
+                            double x = y_pos;
+                            return x;
+                    }
+                    double CelestialBody::get_x_vel()
+                    {
+                            double x = x_vel;
+                            return x;
+                    }
+                    double CelestialBody::get_y_vel()
+                    {
+                            double x = y_vel;
+                            return x;
+                    }
+                    double CelestialBody::get_mass()
+                    {
+                            double x = mass;
+                            return x;
+                    }
+                    double CelestialBody::get_radius()
+                    {
+                            double x = radius;
+                            return x;
+                    }
+                    std::string CelestialBody::get_file_name()
+                    {
+                        std::string x = file_name;
+                        return x;	
+                    }
+                    void CelestialBody::set_x_pos(double x)
+                    {x_pos = x;}
+                    void CelestialBody::set_y_pos(double y)
+                    {y_pos = y;}
+                    void CelestialBody::set_xaccel(double x)
+                    {xaccel = x;}
+                    void CelestialBody::set_yaccel(double y)
+                    {yaccel = y;}
+                    void CelestialBody::set_xforc(double x)
+                    {xforc = x;}
+                    void CelestialBody::set_yforc(double y)
+                    {yforc = y;}
+                    void CelestialBody::set_x_vel(double x)
+                    {x_vel = x;}
+                    void CelestialBody::set_y_vel(double y)
+                    {y_vel = y;}
+
+
+
+                    std::shared_ptr&lt;CelestialBody&gt; Universe::accessPlanet(int num)
+                    {
+                        return planets[num];
+                    }
+                    void Universe::addBody()
+                    {
+                        auto pPlanet = std::shared_ptr&lt;CelestialBody&gt;(new CelestialBody());
+                        planets.push_back(std::move(pPlanet));
+                        
+                    }
+
+                    void Universe::step(double Ttime)
+                    {
+                        std::vector&lt;std::shared_ptr&lt;CelestialBody&gt;&gt;::iterator it, end;
+                        for (it = planets.begin(), end = planets.end(); it != end; it++)
+                        {
+                            (*it)-&gt;set_xaccel( (*it)-&gt;get_xforc() / (*it)-&gt;get_mass());
+                            (*it)-&gt;set_yaccel((*it)-&gt;get_yforc() / (*it)-&gt;get_mass());
+
+                            (*it)-&gt;set_x_vel((*it)-&gt;get_x_vel() + ((*it)-&gt;get_xaccel() * Ttime));
+                            (*it)-&gt;set_y_vel((*it)-&gt;get_y_vel() + ((*it)-&gt;get_yaccel() * Ttime));
+
+                            (*it)-&gt;set_x_pos((*it)-&gt;get_x_pos() + ((*it)-&gt;get_x_vel() * Ttime));
+                            (*it)-&gt;set_y_pos((*it)-&gt;get_y_pos() + ((*it)-&gt;get_y_vel() * Ttime));
+
+                            (*it)-&gt;convertPosition();
+                        }
+                    }
+
+                    std::ostream& operator&lt;&lt; (std::ostream &output, Universe &univ)
+                    {
+                        std::vector&lt;std::shared_ptr&lt;CelestialBody&gt;&gt;::iterator it, end;
+                            for (it = univ.planets.begin(), end = univ.planets.end(); it != end; it++)
+                            {
+                                    output &lt;&lt; (*it)-&gt;get_x_pos() &lt;&lt; " " &lt;&lt; (*it)-&gt;get_y_pos()
+                                &lt;&lt; (*it)-&gt;get_x_vel() &lt;&lt; " " &lt;&lt; (*it)-&gt;get_y_vel()
+                                &lt;&lt; (*it)-&gt;get_mass() &lt;&lt; " " &lt;&lt; (*it)-&gt;get_file_name() 
+                                &lt;&lt; std::endl;
+                            }
+                        return output; 
+                    } 
+                </pre>
+            </div>
+
+            <div id="PS3" >
+                <h3><br><b>Ps3 DNA Sequence Alignment</b></h3>
+                <h4>Assignment Description</h4>
+                <p>
+                    In this assignment we were to create a program that would take input from a file. The input would be a DNA sequence. We had to take that input and find the shortest way to match the sequences up. For example:
+                    Input:
+                    
+                    atattat
+                    tattata
+                    
+                    Expected output:
+                    
+                    Edit distance = 4
+                    a - 2
+                    t t 0
+                    a a 0
+                    t t 0
+                    t t 0
+                    a a 0
+                    t t 0
+                    - a 2
+                    
+                    If we had to insert a gap that would have a cost of 2, if we had to align two characters that would have a cost of 1 and if the characters were already aligned that would not cost anything.
+                     
+                </p>
+                <h4>Key Concepts</h4>
+                <p>The key concepts we used in this assignment were classes and strings. We also implemented a matrix by creating a vector of vectors of int. In this way we were able to make a matrix that would allow us to find the shortest path to line the sequences up.</p>
+                <h4>What I learned</h4>
+                <p>The main thing I learned in this assignment was matrices as I had never used them before. I knew how to make and use vectors, so it was not too far a stretch to figure out the matrix. I can now think of them in two dimensions. Were I to add another vector I could have a three dimensional matrix which is an interesting topic.</p>
+                <h4>Code Running</h4>
+                <img src="../images/ps3.png" alt="Running code">
+                <h4>Makefile</h4>
+                <pre id="dispCode">
+                    CC= g++
+                    CFLAGS= -g -Wall -Werror -std=c++0x -pedantic
+                    SFLAGS= -lsfml-system
+
+                    # Make ps3
+                    all:	ED
+
+                    # body executable
+                    ED:	main.o ED.o
+                        $(CC) main.o ED.o -o ED $(SFLAGS)
+
+                    # object files
+                    main.o:	main.cpp ED.h
+                        $(CC) -c main.cpp ED.h $(CFLAGS)
+
+                    ED.o:	ED.cpp ED.h
+                        $(CC) -c ED.cpp ED.h $(CFLAGS)
+
+                    # Cleanup
+                    clean:
+                        rm *.o
+                        rm *.gch
+                        rm ED
+                </pre>
+                <h4>Main.cpp</h4>
+                <pre id="dispCode">
+                    #include "ED.h"
+
+                    int main(int argc, const char* argv[])
+                    {
+                    
+                    sf::Clock clock;
+                    sf::Time t;
+
+                    std::string string1, string2;
+                    std::cin &gt;&gt; string1 &gt;&gt; string2;
+
+                    ED edit_distance(string1, string2);
+
+                    int dist = edit_distance.OptDistance();
+
+                    std::string alignment = edit_distance.Alignment();
+
+                    
+                    std::cout &lt;&lt; "Edit distance = " &lt;&lt; dist &lt;&lt; std::endl;
+                    std::cout &lt;&lt; alignment; 
+
+                    
+
+                    
+                    t = clock.getElapsedTime();
+                    std::cout &lt;&lt;std::endl &lt;&lt; "Execution time is " &lt;&lt; t.asSeconds() &lt;&lt; " seconds" &lt;&lt; std::endl;
+
+                    return 0;
+                    }
+                </pre>
+                <h4>ED.h</h4>
+                <pre id="dispCode">
+                    #ifndef ED_H
+                    #define ED_H
+
+                    #include &lt;iostream&gt;
+                    #include &lt;iomanip&gt;
+                    #include &lt;sstream&gt;
+                    #include &lt;string&gt;
+                    #include &lt;stdexcept&gt;     
+                    #include &lt;vector&gt;
+                    #include &lt;SFML/System.hpp&gt;
+
+                    class ED
+                    {
+                    public:
+                        ED();
+                        ED(std::string str1, std::string str2);
+                        ~ED();
+                        static int penalty(char a, char b);
+                        static int min(int a, int b, int c);
+                        int OptDistance();
+                        std::string Alignment();
+
+                    private:
+                        std::string fString;
+                        std::string sString;
+
+                        std::vector&lt;std::vector&lt;int&gt;&gt; matrix;
+                    };
+
+                    #endif
+                </pre>
+    
+                <h4>ED.cpp</h4>
+                <pre id="dispCode">
+                    #include "ED.h"
+
+                    ED::ED(std::string str1, std::string str2)
+                    {
+                    fString = str1;
+                    sString = str2;
+                    }
+
+                    ED::~ED()
+                    {
+
+                    }
+
+                    int ED::penalty(char a, char b)
+                    {
+                    if(a == b)   
+                    {
+                        return 0;
+                    }
+                    else if(a != b)
+                    { 
+                        return 1;
+                    }
+
+                    
+                    return -1;
+                    }
+
+
+                    int ED::min(int a, int b, int c)
+                    {
+                    if(a &lt; b && a &lt; c)
+                    {
+                        return a;
+                    }
+
+                    else if(b &lt; a && b &lt; c)
+                    {
+                        return b;
+                    }
+
+                    else if(c &lt; a && c &lt; b)
+                    {
+                        return c;
+                    }
+
+                    
+                    return a;
+                    }
+
+
+                    int ED::OptDistance()
+                    {
+
+                    int N = fString.length();
+                    int M = sString.length();
+
+                    int i;
+                    int j;
+
+                    for(i = 0; i &lt;= M; i++)
+                    {
+                        std::vector&lt;int&gt; temp;
+                        matrix.push_back(temp);
+
+                        
+                        for(j = 0; j &lt;= N; j++)
+                        {
+                        matrix.at(i).push_back(0);
+                        }
+                    }
+
+                    for(i = 0; i &lt;= M; i++)
+                    {
+                        
+                        matrix[i][N] = 2 * (M - i);
+                    }
+
+                    for(j = 0; j &lt;= N; j++)
+                    {
+                    
+                        matrix[M][j] = 2 * (N - j);
+                    }
+
+                    
+                    for(i = M - 1; i &gt;= 0; i--)
+                    {
+                        for(j = N - 1; j &gt;= 0; j--)
+                        {
+                        
+                        int diagonal = matrix[i+1][j+1] + ED::penalty(fString[j], sString[i]);
+                        int up = matrix[i+1][j] + 2;
+                        int left = matrix[i][j+1] + 2;
+
+                        matrix[i][j] = ED::min(diagonal, up, left);
+                        }
+                    }
+
+                    return matrix[0][0];
+                    }
+
+
+                    std::string ED::Alignment()
+                    {
+                    
+                    std::ostringstream outputString;
+
+                    int M = sString.length();
+                    int N = fString.length();
+
+                    int pen;
+                    int diagonal;
+                    int up;
+                    int left;
+                    std::string output_string;
+
+                    int i = 0;
+                    int j = 0;
+                    while(i &lt; M || j &lt; N)
+                    {
+                        
+                        try
+                        {
+                        pen =  ED::penalty(fString[j], sString[i]);
+                        diagonal = matrix.at(i+1).at(j+1) + pen;
+                        }
+                        catch(const std::out_of_range& error)
+                        {
+                        diagonal = -1;
+                        }
+
+                        try
+                        {
+                        up = matrix.at(i+1).at(j) + 2;
+                        }
+                        catch(const std::out_of_range& error)
+                        { 
+                        up = -1;
+                        }
+
+                        try
+                        {
+                        left = matrix.at(i).at(j+1) + 2;
+                        }
+                        catch(const std::out_of_range& error)
+                        {
+                        left  = -1;
+                        }
+
+                    
+                        if(matrix[i][j] == diagonal)
+                        {
+                        outputString &lt;&lt; fString[j] &lt;&lt; " " &lt;&lt;  sString[i] &lt;&lt; " "  &lt;&lt; pen &lt;&lt; std::endl;
+                        i++;
+                        j++;
+                        }
+                        else if(matrix[i][j] == up)
+                        {
+                        outputString &lt;&lt; "- " &lt;&lt; sString[i] &lt;&lt; " 2" &lt;&lt; std::endl;
+                        i++;
+                        }
+                        else if(matrix[i][j] == left)
+                        {
+                        outputString &lt;&lt; fString[j] &lt;&lt; " -" &lt;&lt; " 2" &lt;&lt; std::endl;
+                        j++;
+                        }
+                    }
+
+                    
+                    output_string = outputString.str();
+                    return output_string;
+                    }
+                </pre>
+            </div>
+
+            <div id="PS4A" >
+                <h3><br><b>Ps4A Synthesizing a Plucked String Sound</b></h3>
+                <h4>Assignment Description</h4>
+                <p>
+                    In this assignment we were to implement a circular buffer that accepts 16-bit integers and complete the functions necessary for this including get_size, enqueue, dequeue, peek, and the constructor given the capacity.
+                </p>
+                <h4>Key Concepts</h4>
+                <p>The key concept I used was a vector of 16-bit integers inside of my circular buffer
+                    class. This was central to my design because vectors allow you to access and
+                    change any item in the vector as well as see the size of the vector.
+                    </p>
+                <h4>What I learned</h4>
+                <p>I learned how to use a circular buffer as I had never used one before. We also used boost libraries which gave me more practice with these as I do not have much experience. This was also the first time we used cpplint which checks the formatting of your code and though I have my own style which I prefer, I do understand how having uniform formatting can be helpful.</p>
+                <h4>Code Running</h4>
+                <img src="../images/ps4a.png" alt="Running code">
+                <h4>Makefile</h4>
+                <pre id="dispCode">
+                    CC= g++
+                    CFLAGS= -g -Wall -Werror -std=c++0x -pedantic
+                    Boost= -lboost_unit_test_framework
+
+                    all:	ps4a
+
+                    ps4a:	test.o CircularBuffer.o
+                        $(CC) test.o CircularBuffer.o -o ps4a $(Boost)
+
+                    CircularBuffer.o: CircularBuffer.cpp CircularBuffer.h
+                        $(CC) -c CircularBuffer.cpp CircularBuffer.h $(CFLAGS)
+
+                    test.o: test.cpp CircularBuffer.h
+                        $(CC) -c test.cpp CircularBuffer.h $(CFLAGS)
+
+                    clean:
+                        rm *.o
+                        rm *.gch
+                        rm ps4a
+                </pre>
+                <h4>Test.cpp</h4>
+                <pre id="dispCode">
+                    /*
+                    *Copyright 2021 Colton Choquette
+                    *All rights reserved.
+                    *
+                    *
+                    */
+
+                    #define BOOST_TEST_DYN_LINK
+                    #define BOOST_TEST_MODULE Main
+                    #include &lt;boost/test/unit_test.hpp&gt;
+
+                    #include &lt;iostream&gt;
+                    #include &lt;string&gt;
+                    #include "/home/osboxes/COMP2040/ps4a/CircularBuffer.h"
+                    // include &lt;CircularBuffer.h&gt; // use this if the above doesn't work
+
+                    BOOST_AUTO_TEST_CASE(Constructor) {
+                    BOOST_REQUIRE_NO_THROW(CircularBuffer(100));
+                    BOOST_REQUIRE_THROW(CircularBuffer(0), std::exception);
+                    BOOST_REQUIRE_THROW(CircularBuffer(0), std::invalid_argument);
+                    BOOST_REQUIRE_THROW(CircularBuffer(-1), std::invalid_argument);
+                    }
+
+                    BOOST_AUTO_TEST_CASE(Size) {
+                    CircularBuffer test(1);
+                    BOOST_REQUIRE(test.get_size() == 0);
+                    test.enqueue(5);
+                    BOOST_REQUIRE(test.get_size() == 1);
+                    test.dequeue();
+                    BOOST_REQUIRE(test.get_size() == 0);
+                    }
+
+                    BOOST_AUTO_TEST_CASE(isEmpty) {
+                    CircularBuffer test(5);
+                    BOOST_REQUIRE(test.isEmpty() == true);
+                    CircularBuffer test2(5);
+                    test2.enqueue(5);
+                    BOOST_REQUIRE(test2.isEmpty() == false);
+                    }
+
+                    BOOST_AUTO_TEST_CASE(isFull) {
+                    CircularBuffer test(5);
+                    BOOST_REQUIRE(test.isFull() == false);
+                    CircularBuffer test2(1);
+                    test2.enqueue(5);
+                    BOOST_REQUIRE(test2.isFull() == true);
+                    }
+
+                    BOOST_AUTO_TEST_CASE(Enqueue) {
+                    CircularBuffer test(5);
+                    BOOST_REQUIRE_NO_THROW(test.enqueue(1));
+                    BOOST_REQUIRE_NO_THROW(test.enqueue(2));
+                    BOOST_REQUIRE_NO_THROW(test.enqueue(3));
+                    BOOST_REQUIRE_NO_THROW(test.enqueue(4));
+                    BOOST_REQUIRE_NO_THROW(test.enqueue(5));
+                    BOOST_REQUIRE_THROW(test.enqueue(6), std::runtime_error);
+                    }
+
+                    BOOST_AUTO_TEST_CASE(Dequeue) {
+                    CircularBuffer test(5);
+                    test.enqueue(0);
+                    test.enqueue(1);
+                    test.enqueue(2);
+                    BOOST_REQUIRE(test.dequeue() == 0);
+                    BOOST_REQUIRE(test.dequeue() == 1);
+                    BOOST_REQUIRE(test.dequeue() == 2);
+                    BOOST_REQUIRE_THROW(test.dequeue(), std::runtime_error);
+                    }
+                </pre>
+                <h4>CircularBuffer.h</h4>
+                <pre id="dispCode">
+                    /*
+                    *Copyright 2021 Colton Choquette
+                    *All rights reserved.
+                    *
+                    *
+                    */
+
+                    #ifndef _HOME_OSBOXES_COMP2040_PS4A_CIRCULARBUFFER_H_
+                    #define _HOME_OSBOXES_COMP2040_PS4A_CIRCULARBUFFER_H_
+                    #include <stdint.h>
+                    #include <iostream>
+                    #include <exception>
+                    #include <stdexcept>
+                    #include <vector>
+                    class CircularBuffer {
+                    public:
+                        explicit CircularBuffer(int Tcapacity);
+                        int get_size();
+                        bool isEmpty();
+                        bool isFull();
+                        void enqueue(int16_t x);
+                        int16_t dequeue();
+                        int16_t peek();
+                    private:
+                        int capacity;
+                        int size;
+                        int first;
+                        int last;
+                        std::vector<int16_t> CBuff;
+                    };
+                    #endif  //  _HOME_OSBOXES_COMP2040_PS4A_CIRCULARBUFFER_H_
+
+                </pre>
+    
+                <h4>CircularBuffer.cpp</h4>
+                <pre id="dispCode">
+                    #include "/home/osboxes/COMP2040/ps4a/CircularBuffer.h"
+                    // include &lt;CircularBuffer.h&gt; // use this if the above doesn't work
+                    /*
+                    *Copyright 2021 Colton Choquette
+                    *All rights reserved.
+                    *
+                    *
+                    */
+
+
+                    CircularBuffer::CircularBuffer(int Tcapacity) {
+                    if (Tcapacity &lt; 1)  {
+                        throw
+                        std::invalid_argument(
+                            "CircularBuffer constructor: capacity must be greater than zero.");
+                    }
+                    last = 0;
+                    first = 0;
+                    size = 0;
+                    capacity  = Tcapacity;
+                    CBuff.resize(Tcapacity);
+
+                    return;
+                    }
+
+                    int CircularBuffer::get_size() {
+                    return size;
+                    }
+
+                    bool CircularBuffer::isFull() {
+                    if (size == capacity) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                    }
+
+                    bool CircularBuffer::isEmpty() {
+                            if (size == 0) {
+                                    return true;
+                            } else {
+                                    return false;
+                            }
+                    }
+
+                    void CircularBuffer::enqueue(int16_t x) {
+                    if (isFull()) {
+                        throw
+                        std::runtime_error("enqueue: can't enqueue to a full ring.");
+                    }
+                    if (last &gt;= capacity) {
+                        last = 0;
+                    }
+                    CBuff.at(last) = x;
+                    last++;
+                    size++;
+                    }
+
+                    int16_t CircularBuffer::dequeue() {
+                    if (isEmpty()) {
+                        throw
+                        std::runtime_error("dequeue: can't dequeue from an empty ring");
+                    }
+                    int16_t frst = CBuff.at(first);
+                    CBuff.at(first) = 0;
+                    first++;
+                    size--;
+                    if (first == capacity) {
+                        first = 0;
+                    }
+                    return frst;
+                    }
+
+                    int16_t CircularBuffer::peek() {
+                    if (isEmpty()) {
+                        throw
+                        std::runtime_error("peek: can't peek from an empty ring");
+                    }
+                    return CBuff.at(first);
+                    }
+                </pre>
+            </div>
+
+            <div id="PS4B" >
+                <h3><br><b>Ps4B Synthesizing a Plucked String Sound</b></h3>
+                <h4>Assignment Description</h4>
+                <p>
+                    In this assignment we were to take our circular buffer code and use it to code the sound of a string being plucked. The key to getting this sound was the frequency given to the code in hertz. 
+                </p>
+                <h4>Key Concepts</h4>
+                <p>The Key concepts to this project were the circular buffer that we used in the last project as well as C++ exceptions to ensure our code is running correctly. </p>
+                <h4>What I learned</h4>
+                <p>In this assignment I learned how to use lambda expressions in my circular buffer to sort the buffer in ascending order. I also learned about dynamic programming and got to practice with classes and how to use sounds in SFML.</p>
+                <h4>Code Running</h4>
+                <img src="../images/ps4b.png" alt="Running code">
+                <h4>Makefile</h4>
+                <pre id="dispCode">
+                    CC= g++
+                    CFLAGS= -g -Wall -Werror -std=c++0x -pedantic
+                    SFLAGS= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+                    Boost= -lboost_unit_test_framework
+
+                    all:	KSGuitarSim
+
+                    KSGuitarSim:	KSGuitarSim.o StringSound.o CircularBuffer.o
+                        $(CC) KSGuitarSim.o StringSound.o CircularBuffer.o -o KSGuitarSim $(SFLAGS)
+
+                    GStest:	GStest.o StringSound.o CircularBuffer.o
+                        $(CC) GStest.o StringSound.o CircularBuffer.o -o GStest $(Boost)
+
+                    KSGuitarSim.o: 	KSGuitarSim.cpp StringSound.h
+                        $(CC) -c KSGuitarSim.cpp StringSound.h $(CFLAGS)
+
+                    StringSound.o: StringSound.cpp StringSound.h
+                        $(CC) -c StringSound.cpp StringSound.h $(CFLAGS)
+
+                    CircularBuffer.o: CircularBuffer.cpp CircularBuffer.h
+                        $(CC) -c CircularBuffer.cpp CircularBuffer.h $(CFLAGS)
+
+                    GStest.o:	GStest.cpp
+                        $(CC) -c GStest.cpp $(Boost)
+
+                    clean:
+                        rm *.o
+                        rm *.gch
+                        rm KSGuitarSim
+                </pre>
+                <h4>KSGuitarSim.cpp</h4>
+                <pre id="dispCode">
+                    /*
+                    * Copyright 2021 Colton Choquette
+                    * All rights reserved.
+                    * 
+                    *
+                    */
+                    #include &lt;SFML/Graphics.hpp&gt;
+                    #include &lt;SFML/System.hpp&gt;
+                    #include &lt;SFML/Audio.hpp&gt;
+                    #include &lt;SFML/Window.hpp&gt;
+
+                    #include &lt;math.h&gt;
+                    #include &lt;limits.h&gt;
+
+                    #include &lt;iostream&gt;
+                    #include &lt;string&gt;
+                    #include &lt;exception&gt;
+                    #include &lt;stdexcept&gt;
+                    #include &lt;vector&gt;
+
+                    #include "CircularBuffer.h"
+                    #include "StringSound.h"
+
+                    #define CONCERT_A 440.0
+                    #define SAMPLES_PER_SEC 44100
+                    const int keyboard_size = 37;
+
+                    std::vector&lt;sf::Int16&gt; makeSamplesFromString(StringSound gs) {
+                    std::vector&lt;sf::Int16&gt; samples;
+
+                    gs.pluck();
+                    int duration = 8;  // seconds
+                    int i;
+                    for (i = 0; i &lt; SAMPLES_PER_SEC * duration; i++) {
+                        gs.tic();
+                        samples.push_back(gs.sample());
+                    }
+
+                    return samples;
+                    }
+
+                    int main() {
+                    sf::RenderWindow window(sf::VideoMode(800, 800), "SFML Guitar Sounds");
+                    sf::Event event;
+
+                    double freq;
+                    std::vector&lt;sf::Int16&gt; sample;
+
+                    std::vector&lt;std::vector&lt;sf::Int16&gt;&gt; samples(keyboard_size);
+                    std::vector&lt;sf::SoundBuffer&gt; buffers(keyboard_size);
+                    std::vector&lt;sf::Sound&gt; sounds(keyboard_size);
+
+                    std::string keyboard = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
+
+                    for (int i = 0; i &lt; (signed)keyboard.size(); i++) {
+                        freq = CONCERT_A * pow(2, ( (i - 24)/12.0));
+                        StringSound tmp = StringSound(freq);
+
+                        sample = makeSamplesFromString(tmp);
+                        samples[i] = sample;
+
+                        if (!buffers[i].loadFromSamples(&samples[i][0],
+                            samples[i].size(), 2, SAMPLES_PER_SEC)) {
+                        throw std::runtime_error("sf::SoundBuffer: failed to load from samples.");
+                        }
+
+                        sounds[i].setBuffer(buffers[i]);
+                    }
+
+                    while (window.isOpen()) {
+                        while (window.pollEvent(event)) {
+                        if (event.type == sf::Event::Closed) {
+                            window.close();
+                        }
+                            if (event.type == sf::Event::TextEntered) {
+                            if (event.text.unicode &lt; 128) {
+                                char key = static_cast&lt;char&gt;(event.text.unicode);
+
+                                for (int i = 0; i &lt; (signed)keyboard.size(); i++) {
+                                if (keyboard[i] == key) {
+                                    std::cout &lt;&lt; "Keyboard key is: " &lt;&lt; keyboard[i] &lt;&lt; "\n";
+                                    std::cout &lt;&lt; "Attempting to play sound...\n";
+                                    sounds[i].play();
+                                    break;
+                                }
+                                }
+                            }
+                            }
+                        }
+
+                        window.clear();
+                        window.display();
+                    }
+                    return 0;
+                    }
+                </pre>
+                <h4>CircularBuffer.h</h4>
+                <pre id="dispCode">
+                    /*
+                    *Copyright 2021 Colton Choquette
+                    *All rights reserved.
+                    *
+                    *
+                    */
+
+                    #ifndef _HOME_OSBOXES_COMP2040_KSGUITARSIM_CIRCULARBUFFER_H_
+                    #define _HOME_OSBOXES_COMP2040_KSGUITARSIM_CIRCULARBUFFER_H_
+                    #include &lt;stdint.h&gt;
+                    #include &lt;iostream&gt;
+                    #include &lt;exception&gt;
+                    #include &lt;stdexcept&gt;
+                    #include &lt;algorithm&gt;
+                    #include &lt;vector&gt;
+                    class CircularBuffer {
+                    public:
+                        explicit CircularBuffer(int Tcapacity);
+                        bool empty();
+                        void sortVector();
+                        int get_size();
+                        bool isEmpty();
+                        bool isFull();
+                        void enqueue(int16_t x);
+                        int16_t dequeue();
+                        int16_t peek();
+                    private:
+                        int capacity;
+                        int size;
+                        int first;
+                        int last;
+                        std::vector&lt;int16_t&gt; CBuff;
+                    };
+                    #endif  //  _HOME_OSBOXES_COMP2040_KSGUITARSIM_CIRCULARBUFFER_H_
+                </pre>
+    
+                <h4>StringSound.h</h4>
+                <pre id="dispCode">
+                    /*
+                    * Copyright 2021 Colton Choquette
+                    * All rights reserved.
+                    * 
+                    *
+                    */
+                    #ifndef _HOME_OSBOXES_COMP2040_KSGUITARSIM_STRINGSOUND_H_
+                    #define _HOME_OSBOXES_COMP2040_KSGUITARSIM_STRINGSOUND_H_
+
+                    #include &lt;SFML/Audio.hpp&gt;
+                    #include &lt;SFML/Graphics.hpp&gt;
+                    #include &lt;SFML/System.hpp&gt;
+                    #include &lt;SFML/Window.hpp&gt;
+                    #include &lt;cmath&gt;
+                    #include &lt;iostream&gt;
+                    #include &lt;string&gt;
+                    #include &lt;vector&gt;
+                    #include "CircularBuffer.h"
+
+                    const int SAMPLING_RATE = 44100;
+                    const double ENERGY_DECAY_FACTOR = 0.996;
+
+                    class StringSound {
+                    public:
+                    explicit StringSound(double frequency);
+                    explicit StringSound(std::vector&lt;sf::Int16&gt; init);
+                    ~StringSound();
+                    void pluck();
+                    void tic();
+                    sf::Int16 sample();
+                    int get_time();
+                    private:
+                    CircularBuffer *_cb;
+                    int _time;
+                    };
+                    #endif  //  _HOME_OSBOXES_COMP2040_KSGUITARSIM_STRINGSOUND_H_
+                </pre>
+
+                <h4>CircularBuffer.cpp</h4>
+                <pre id="dispCode">#include "/home/osboxes/COMP2040/KSGuitarSim/CircularBuffer.h"
+                    // #include "CircularBuffer.h"  // use this if the above doesn't work
+                    /*
+                     *Copyright 2021 Colton Choquette
+                     *All rights reserved.
+                     *
+                     *
+                     */
+                    
+                    
+                    CircularBuffer::CircularBuffer(int Tcapacity) {
+                      if (Tcapacity &lt; 1)  {
+                        throw
+                          std::invalid_argument(
+                            "CircularBuffer constructor: capacity must be greater than zero.");
+                      }
+                      last = 0;
+                      first = 0;
+                      size = 0;
+                      capacity  = Tcapacity;
+                      CBuff.resize(Tcapacity);
+                    
+                      return;
+                    }
+                    
+                    bool CircularBuffer::empty() {
+                      if (isEmpty() == false) {
+                        last = 0;
+                        first = 0;
+                        size = 0;
+                        return true;
+                      } else {
+                        return true;
+                      }
+                      return false;
+                    }
+                    void CircularBuffer::sortVector() {
+                      std::sort(CBuff.begin(), CBuff.end(),
+                      [&](const int16_t left, const int right) {return left &gt; right;});
+                    }
+                    
+                    int CircularBuffer::get_size() {
+                      return size;
+                    }
+                    
+                    bool CircularBuffer::isFull() {
+                      if (size == capacity) {
+                        return true;
+                      } else {
+                        return false;
+                      }
+                    }
+                    
+                    bool CircularBuffer::isEmpty() {
+                            if (size == 0) {
+                                    return true;
+                            } else {
+                                    return false;
+                            }
+                    }
+                    
+                    void CircularBuffer::enqueue(int16_t x) {
+                      if (isFull()) {
+                        throw
+                          std::runtime_error("enqueue: can't enqueue to a full ring.");
+                      }
+                      if (last &gt;= capacity) {
+                        last = 0;
+                      }
+                      CBuff.at(last) = x;
+                      last++;
+                      size++;
+                    }
+                    
+                    int16_t CircularBuffer::dequeue() {
+                      if (isEmpty()) {
+                        throw
+                          std::runtime_error("dequeue: can't dequeue from an empty ring");
+                      }
+                      int16_t frst = CBuff.at(first);
+                      CBuff.at(first) = 0;
+                      first++;
+                      size--;
+                      if (first == capacity) {
+                        first = 0;
+                      }
+                      return frst;
+                    }
+                    
+                    int16_t CircularBuffer::peek() {
+                      if (isEmpty()) {
+                        throw
+                          std::runtime_error("peek: can't peek from an empty ring");
+                      }
+                      return CBuff.at(first);
+                    }</pre>
+
+                <h4>StringSound.cpp</h4>
+                <pre id="dispCode">/*
+                    * Copyright 2021 Colton Choquette
+                    * All rights reserved.
+                    * 
+                    *
+                    */
+                   #include "/home/osboxes/COMP2040/KSGuitarSim/StringSound.h"
+                   #include &lt;vector&gt;
+                   
+                   
+                   StringSound::StringSound(double frequency) {
+                     _cb = new CircularBuffer(ceil(SAMPLING_RATE / frequency));
+                     for (int i = 0; i &lt; (ceil(SAMPLING_RATE / frequency)); i++) {
+                       _cb-&gt;enqueue((int16_t)0);
+                     }
+                     _time = 0;
+                   }
+                   
+                   
+                   StringSound::StringSound(std::vector&lt;sf::Int16&gt; init) {
+                     _cb = new CircularBuffer(init.size());
+                   
+                     std::vector&lt;sf::Int16&gt;::iterator it;
+                   
+                     for (it = init.begin(); it &lt; init.end(); it++) {
+                       _cb-&gt;enqueue((int16_t)*it);
+                     }
+                     _time = 0;
+                   }
+                   
+                   StringSound::~StringSound() {
+                     delete _cb;
+                   }
+                   
+                   thread_local unsigned int seed = time(NULL);
+                   void StringSound::pluck() {
+                     int N = _cb-&gt;get_size();
+                     bool yes_no = _cb-&gt;empty();
+                     if (yes_no == false) {
+                       throw
+                       std::invalid_argument("Empty queue failed");
+                     }
+                     for (int i = 0; i &lt; N; i++) {
+                       _cb-&gt;enqueue((rand_r(&seed) & 0xffff));
+                     }
+                     return;
+                   }
+                   
+                   
+                   void StringSound::tic() {
+                     int16_t first = _cb-&gt;dequeue();
+                     int16_t second = _cb-&gt;peek();
+                   
+                     int16_t avg = (first + second) / 2;
+                     int16_t karplus = avg * ENERGY_DECAY_FACTOR;
+                   
+                     _cb-&gt;enqueue((sf::Int16)karplus);
+                   
+                     _time++;
+                   
+                     return;
+                   }
+                   
+                   
+                   sf::Int16 StringSound::sample() {
+                     sf::Int16 sample = (sf::Int16)_cb-&gt;peek();
+                   
+                     return sample;
+                   }
+                   
+                   
+                   int StringSound::get_time() {
+                     return _time;
+                   }</pre>
+            </div>
+
+            <div id="PS5" >
+                <h3><br><b>Ps5 Recursive Graphics</b></h3>
+                <h4>Assignment Description</h4>
+                <p>
+                    In this assignment we had to create a function that given a number of iterations will create that many instances of triangles off of the corner of the last triangle that was made. I was able to do this using a recursive function.  
+                </p>
+                <h4>Key Concepts</h4>
+                <p>The key project was recursion. I had my function create triangles and call itself if there was another iteration to be drawn but I gave it a different position and its length was a fraction of the original length based off what iteration it was on. Using this I was able to make the triangles smaller as the iterations went on. We also used a class though this project could have been accomplished without one.</p>
+                <h4>What I learned</h4>
+                <p>In this assignment the main thing I learned was recursion. I have as of yet only used recursion one other time, so this was good practice. I had to write the logic of the recursion out on paper and give it a lot of thought before I was confident that I had a valid concept. Then once I went to the actual code I just had to figure out the basics of how to draw shapes in SFML.</p>
+                <h4>Code Running</h4>
+                <img src="../images/ps5.png" alt="Running code">
+                <h4>Makefile</h4>
+                <pre id="dispCode">
+                    CC = g++
+                    CFLAGS = -c -g -Og -Wall -Werror -ansi -pedantic -std=c++11
+                    OBJ = Triangle.o TFractal.o
+                    DEPS =
+                    LIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
+                    EXE = ps5
+
+                    all: $(OBJ)
+                        $(CC) $(OBJ) -o $(EXE) $(LIBS)
+                    %.o: %.cpp $(DEPS)
+                        $(CC) $(CFLAGS) -o $@ $&lt;
+                    
+                    clean:
+                        rm $(OBJ) $(EXE)
+                </pre>
+                <h4>TFractal.cpp</h4>
+                <pre id="dispCode">
+                    /*
+                    *Copyright 2021 Colton Choquette
+                    *All rights reserved.
+                    *
+                    *
+                    */
+                    #include "Triangle.h"
+                    #include &lt;string&gt;
+
+                    int main(int argc, char* argv[]) {
+                    std::string _L(argv[1]);
+                    std::string _N(argv[2]);
+                    int N = std::stoi(_N);
+                    double L = std::stod(_L);
+                    sf::Vector2f pos;
+                    if (L &lt; 10) {
+                        L = L * 100;
+                    } else if (L &gt;= 10 && L &lt; 100) {
+                        L = L * 10;
+                    }
+                    pos.x = (L * 1.75);
+                    pos.y = (L * 1.75);
+                    Triangle tr(L, N);
+                    sf::RenderWindow window(sf::VideoMode((L * 8), (L * 8)), "Sierpinski");
+                    while (window.isOpen()) {
+                        sf::Event event;
+                        while (window.pollEvent(event)) {
+                        if (event.type == sf::Event::Closed) {
+                            window.close();
+                        }
+                        }
+                        tr.fTree(&window, pos, 1, 1);
+                    }
+
+                    return 0;
+                    }
+                </pre>
+                <h4>Triangle.h</h4>
+                <pre id="dispCode">
+                    /*
+                    *Copyright 2021 Colton Choquette
+                    *All rights reserved.
+                    *
+                    *
+                    */
+                    #ifndef _HOME_OSBOXES_COMP2040_PS5_TRIANGLE_H_
+                    #define _HOME_OSBOXES_COMP2040_PS5_TRIANGLE_H_
+                    #include &lt;SFML/System.hpp&gt;
+                    #include &lt;SFML/Window.hpp&gt;
+                    #include &lt;SFML/Graphics.hpp&gt;
+                    #include &lt;iostream&gt;
+                    #include &lt;string&gt;
+                    #include &lt;fstream&gt;
+                    #include &lt;memory&gt;
+                    #include &lt;cmath&gt;
+
+                    class Triangle {
+                    public:
+                        Triangle(double L, int N);
+                        void fTree(sf::RenderWindow* window, sf::Vector2f pos, int side,
+                    int cur_it);
+                    private:
+                        double length;
+                        int iterations;
+                    };
+                    #endif  // _HOME_OSBOXES_COMP2040_PS5_TRIANGLE_H_
+                </pre>
+    
+                <h4>Triangle.cpp</h4>
+                <pre id="dispCode">
+                    /*
+                    *Copyright 2021 Colton Choquette
+                    *All rights reserved.
+                    *
+                    *
+                    */
+                    #include "/home/osboxes/COMP2040/ps5/Triangle.h"
+
+                    Triangle::Triangle(double L, int N) {
+                    length = L;
+                    iterations = N;
+                    }
+
+                    void Triangle::fTree(sf::RenderWindow* window, sf::Vector2f pos, int side,
+                    int cur_it) {
+                    sf::Vector2f end_pos;
+                    sf::ConvexShape tri;
+                    double distx = (length / pow(2, cur_it - 1)) / 2;
+                    double disty = (length / pow(2, cur_it - 1)) * sqrt(0.75);
+                    tri.setPointCount(3);
+
+                    if (side == 1) {
+                        tri.setPoint(0, pos);
+                        end_pos = pos;
+                        end_pos.x = end_pos.x + (length / pow(2, cur_it - 1));
+                        if ((iterations - cur_it) > 0) {
+                        this->fTree(window, end_pos, 1, (cur_it + 1));
+                        }
+                        tri.setPoint(1, end_pos);
+                        end_pos.x = end_pos.x - distx;
+                        end_pos.y = end_pos.y + disty;
+                        if ((iterations - cur_it) > 0) {
+                        this->fTree(window, end_pos, 2, (cur_it + 1));
+                        }
+                        tri.setPoint(2, end_pos);
+                        if ((iterations - cur_it) > 0) {
+                        this->fTree(window, tri.getPoint(0), 3, (cur_it + 1));
+                        }
+
+                    } else if (side == 2) {
+                        tri.setPoint(0, pos);
+                        end_pos = pos;
+                        end_pos.x = end_pos.x - distx;
+                        end_pos.y = end_pos.y + disty;
+                        if ((iterations - cur_it) > 0) {
+                        this->fTree(window, end_pos, 2, (cur_it + 1));
+                        }
+                        tri.setPoint(1, end_pos);
+                        end_pos.x = end_pos.x - distx;
+                        end_pos.y = end_pos.y - disty;
+                        if ((iterations - cur_it) > 0) {
+                        this->fTree(window, end_pos, 3, (cur_it + 1));
+                        }
+                        tri.setPoint(2, end_pos);
+                        if ((iterations - cur_it) > 0) {
+                        this->fTree(window, tri.getPoint(0), 1, (cur_it + 1));
+                        }
+
+                    } else if (side == 3) {
+                        tri.setPoint(0, pos);
+                        end_pos = pos;
+                        end_pos.x = end_pos.x - distx;
+                        end_pos.y = end_pos.y - disty;
+                        if ((iterations - cur_it) > 0) {
+                        this->fTree(window, end_pos, 3, (cur_it + 1));
+                        }
+                        tri.setPoint(1, end_pos);
+                        end_pos.x = end_pos.x + (length / pow(2, cur_it - 1));
+                        if ((iterations - cur_it) > 0) {
+                        this->fTree(window, end_pos, 1, (cur_it + 1));
+                        }
+                        tri.setPoint(2, end_pos);
+                        if ((iterations - cur_it) > 0) {
+                        this->fTree(window, tri.getPoint(0), 2, (cur_it + 1));
+                        }
+                    }
+                    tri.setOutlineColor(sf::Color::Red);
+                    tri.setOutlineThickness(3);
+                    tri.setFillColor(sf::Color(255, 255, 255, 0));
+                    window->draw(tri);
+                    window->display();
+                    }
+
+                </pre>
+            </div>
+
+            <div id="PS6" >
+                <h3><br><b>Ps6 Kronos Time Clock</b></h3>
+                <h4>Assignment Description</h4>
+                <p>
+                    In this assignment we had to parse our way through a given log file to find specific boot messages and match these using regex. Then we needed to create an output file and show each of the boots, whether they were successful (if they ended before another boot message started), and the time it took to boot up. We did this by finding the time and date of the start message and the time and date of the end message and calculating the time in between. 
+                </p>
+                <h4>Key Concepts</h4>
+                <p>The key concept of this assignment was regular expressions. We used these to match specific text we were looking for. We also had to take the input file as a command line argument and create an output file with a slightly changed name. </p>
+                <h4>What I learned</h4>
+                <p>The most important thing I learned in this assignment was regular expressions, how they work, and their syntax. This is very important as many programming languages use similar syntax in their regular expressions and being able to search a large file for specific information is very valuable.</p>
+                <h4>Code Running</h4>
+                <img src="../images/ps6.png" alt="Running code">
+                <h4>Makefile</h4>
+                <pre id="dispCode">
+                    CC = g++
+                    CFLAGS = -g -Wall -Werror -std=c++0x -pedantic
+                    SFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+                    Boost = -lboost_regex -lboost_date_time
+
+                    all:	ps6
+
+                    # PS6 executable
+                    ps6:	ps6.o
+                        $(CC) ps6.o -o ps6 $(Boost)
+
+                    ps6.o: ps6.cpp
+                        $(CC) -c ps6.cpp $(CFLAGS)
+
+                    clean:
+                        rm *.o
+                        rm ps6
+                </pre>
+                <h4>Ps6.cpp</h4>
+                <pre id="dispCode">
+                    /*
+                    *Copyright 2021 Colton Choquette
+                    *All rights reserved.
+                    *
+                    */
+
+                    #include &lt;boost/regex.hpp&gt;
+                    #include &lt;iostream&gt;
+                    #include &lt;fstream&gt;
+                    #include &lt;string&gt;
+                    #include &lt;cstdlib&gt;
+                    #include &lt;vector&gt;
+                    #include “boost/date_time/ regorian/ regorian.hpp”
+                    #include “boost/date_time/posix_time/posix_time.hpp”
+
+
+                    using std::string;
+
+                    using boost::regex;
+
+                    using boost:: regorian::date;
+                    using boost:: regorian::from_simple_string;
+                    using boost:: regorian::date_period;
+                    using boost:: regorian::date_duration;
+
+                    using boost::posix_time::ptime;
+                    using boost::posix_time::time_duration;
+
+                    template &lt;typename T&gt;
+                    int to_int(const T& sm) {
+                    return atoi(sm.str().c_str());
+                    }
+
+                    int main(int argc, char* argv[]) {
+                    if (argc != 2) {
+                        std::cout &lt;&lt; “Invalid # of command lind arguments” &lt;&lt; std::endl;
+                        return 0;
+                    }
+
+                    std::ifstream inputFile(argv[1], std::ifstream::in);
+                    if (!inputFile.is_open()) {
+                        std::cout &lt;&lt; “Unable to open file \”” &lt;&lt; argv[1] &lt;&lt; “\”” &lt;&lt; std::endl;
+                        return 0;
+                    }
+
+                    string outputFileName(string(argv[1]) + “.rpt”);
+                    std::ofstream outputFile;
+                    outputFile.open(outputFileName.c_str());
+
+                    string stringDate(“([0-9]{4})-([0-9]{1,2})-([0-9]{1,2}) “);
+                    string stringTime(“([0-9]{2})☹[0-9]{2})☹[0-9]{2})”);
+                    string stringBoot(“(.*log.c.166.*)”);
+                    string sDone(“(.*oejs.AbstractConnector:Started SelectChannelConnector.*)”);
+
+                    regex regBoot(stringDate + stringTime + stringBoot);
+                    regex regDone(stringDate + stringTime + sDone);
+
+                    boost::smatch fMatch;
+
+                    string line;
+                    int lineNumber = 1;
+                    int isBooting = 0;
+                    ptime t1, t2;
+
+                    while (getline(inputFile, line)) {
+                        if (regex_match(line, fMatch, regBoot)) {
+                        if (isBooting) {
+                            outputFile &lt;&lt; “**** Incomplete boot **** \n” &lt;&lt; std::endl;
+                        }
+
+                        date _date(from_simple_string(fMatch[0]));
+                        ptime temp(_date, time_duration(to_int(fMatch[4]),
+                    to_int(fMatch[5]), to_int(fMatch[6])));
+
+                        t1 = temp;
+
+                        outputFile &lt;&lt; “=== Device boot ===” &lt;&lt; std::endl;
+                        outputFile &lt;&lt; lineNumber &lt;&lt; “(“ &lt;&lt; argv[1] &lt;&lt; “): “;
+                        outputFile &lt;&lt; fMatch[1] &lt;&lt; “-“ &lt;&lt; fMatch[2] &lt;&lt; “-“ &lt;&lt; fMatch[3] &lt;&lt; “ “;
+                        outputFile &lt;&lt; fMatch[4] &lt;&lt; “:” &lt;&lt; fMatch[5] &lt;&lt; “:” &lt;&lt; fMatch[6] &lt;&lt; “ “;
+                        outputFile &lt;&lt; “Boot Start” &lt;&lt; std::endl;
+
+                        isBooting = 1;
+
+                        } else if (regex_match(line, fMatch, regDone)) {
+                        if (isBooting) {
+                            date _date(from_simple_string(fMatch[0]));
+                            ptime temp(_date, time_duration(to_int(fMatch[4]), to_int(fMatch[5]),
+                    to_int(fMatch[6])));
+
+                            t2 = temp;
+
+                            time_duration timdur = t2 – t1;
+
+                            outputFile &lt;&lt; lineNumber &lt;&lt; “(“ &lt;&lt; argv[1] &lt;&lt; “): “;
+                            outputFile &lt;&lt; fMatch[1] &lt;&lt; “-“ &lt;&lt; fMatch[2] &lt;&lt; “-“ &lt;&lt; fMatch[3] &lt;&lt; “ “;
+                            outputFile &lt;&lt; fMatch[4] &lt;&lt; “:” &lt;&lt; fMatch[5] &lt;&lt; “:” &lt;&lt; fMatch[6] &lt;&lt; “ “;
+                            outputFile &lt;&lt; “Boot Completed” &lt;&lt; std::endl;
+
+                            outputFile &lt;&lt; “     “ &lt;&lt; “Boot Time: “;
+                            outputFile &lt;&lt; timdur.total_milliseconds() &lt;&lt; “ms \n” &lt;&lt; std::endl;
+
+                            isBooting = 0;
+                        } else {
+                            outputFile &lt;&lt; “**** Unexpected boot ****\n” &lt;&lt; std::endl;
+                        }
+                        }
+
+                        lineNumber++;
+                    }
+
+                    return 0;
+                    }
+                </pre>
+                
+            </div>
+           
+
+
+        </div>
+
+    </div>
+  <script>
+
+  </script>
+</body>
+
+
+</html>
